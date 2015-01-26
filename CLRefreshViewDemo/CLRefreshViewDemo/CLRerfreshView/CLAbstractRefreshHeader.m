@@ -13,6 +13,15 @@
 #import "CLRefreshViewConstant.h"
 @implementation CLAbstractRefreshHeader
 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    frame.size.height = CLRefreshHeaderVeiwHeight;
+    self = [super initWithFrame:frame];
+    if (self) {
+        
+    }
+    return self;
+}
 
 #pragma mark -overwrite
 -(CGFloat)showProgress:(UIEdgeInsets)scrollViewInsets scrollViewOffset:(CGPoint)offset{
@@ -28,7 +37,9 @@
 -(CGPoint)willShowPoint{
     return CGPointMake(0, -self.scrollViewOriginalInsets.top - self.cl_height);
 }
-
+-(void)refreshViewChangeUIWhenNormal{
+    
+}
 -(void)refreshViewChangeUIWhenFinishLoading{
     
     if (self.scrollViewOriginalInsets.top == 0) {
@@ -44,10 +55,13 @@
 }
 -(void)refreshViewChangeUIWhenLoading{
     CGFloat top = self.scrollViewOriginalInsets.top + self.cl_height;
+    
     [UIView animateWithDuration:CLRefreshAnimationDurationNormal animations:^{
         self.scrollView.cl_contentInsetTop = top;
-    } completion:^(BOOL finished) {
-//        [self.scrollView setContentOffset:CGPointMake(0, -top) animated:YES];
+    }completion:^(BOOL finished) {
+        [UIView animateWithDuration:CLRefreshAnimationDurationNormal animations:^{
+            self.scrollView.contentOffset = CGPointMake(0, -top);
+        }];
     }];
 }
 

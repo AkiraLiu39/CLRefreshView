@@ -16,3 +16,9 @@ const CGFloat CLRefreshAnimationDurationNormal = 0.25f;
 const CGFloat CLRefreshAnimationDurationFast = 0.1f;
 const CGFloat CLRefreshAnimationDurationZero = 0.0f;
 NSString *const CLLoadingViewRotationAnimationKey = @"rotation";
+
+NSString *const CLRefreshViewTextLabelnormalText = @"敢不敢再往下拉一点!?";
+NSString *const CLRefreshViewTextLabelWillLoadText = @"我错了,松手!快松手!";
+NSString *const CLRefreshViewTextLabelLoadingText = @"努力获取数据中";
+NSString *const CLRefreshViewTextLabelFinishLoadingText = @"哥往上缩,一闪而过";
+NSString *const CLRefreshFooterLoadButtonTitle = @"点我加载更多";

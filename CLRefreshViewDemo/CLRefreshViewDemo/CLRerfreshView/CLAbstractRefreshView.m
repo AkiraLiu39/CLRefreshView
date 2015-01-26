@@ -18,12 +18,11 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
-    frame.size.height = CLRefreshHeaderVeiwHeight;
+    
     self = [super initWithFrame:frame];
     if (self) {
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         self.backgroundColor = [UIColor clearColor];
-//
     }
     return self;
 }
@@ -108,8 +107,16 @@
                 }
             } completion:^(BOOL finished) {
                 self.loadingView.hidden = NO;
+                if([self respondsToSelector:@selector(refreshViewChangeUIWhenNormal)]){
+                    [self refreshViewChangeUIWhenNormal];
+                }
             }];
             [self.loadingView stopAnimation];
+        }else{
+            if([self respondsToSelector:@selector(refreshViewChangeUIWhenNormal)]){
+                [self refreshViewChangeUIWhenNormal];
+            }
+            
         }
         
     }else if(self.state == CLRefreshViewStateWillLoading){
@@ -137,7 +144,7 @@
         self.loadingView.showProgress = 1.0f;
         self.state = CLRefreshViewStateLoading;
     }else{
-        //drwaRect: 中处理
+        //drwaRect:中处理
         self.state = CLRefreshViewStateWillLoading;
     }
 }
@@ -159,6 +166,12 @@
 }
 -(void)dealloc{
     NSLog(@"<%@,%p> is dealloc",self.class,self);
+}
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    if (self.state != CLRefreshViewStateLoading) {
+        _scrollViewOriginalInsets = self.scrollView.contentInset;
+    }
 }
 
 @end

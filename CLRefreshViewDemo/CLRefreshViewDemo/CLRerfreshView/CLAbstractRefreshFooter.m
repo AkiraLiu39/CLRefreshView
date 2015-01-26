@@ -12,22 +12,43 @@
 #import "CLCircleLoadingView.h"
 #import "CLRefreshViewConstant.h"
 @implementation CLAbstractRefreshFooter
--(instancetype)initWithFrame:(CGRect)frame{
-    if (self = [super initWithFrame:frame]) {
-        CLCircleLoadingView *loadingView = [CLCircleLoadingView loadingView];
-        [self addSubview:loadingView];
-        self.loadingView = loadingView;
-        self.loadingWhenShow = NO;
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    frame.size.height = CLRefreshFooterVeiwHeight;
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.overScrollView = NO;
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.titleLabel.font = kCLRefreshFooterLoadButtonFont;
+        [btn setTitle:CLRefreshFooterLoadButtonTitle forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(startRefresh) forControlEvents:UIControlEventTouchUpInside];
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self addSubview:btn];
+        self.loadButton = btn;
     }
     return self;
 }
+-(void)startRefresh{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.loadButton.hidden = YES;
+        self.loadingView.hidden = NO;
+    });
+    
+    [super startRefresh];
 
-
+}
+-(void)setOverScrollView:(BOOL)overScrollView{
+    _overScrollView = overScrollView;
+    self.loadButton.hidden = overScrollView;
+    self.loadingView.hidden = !overScrollView;
+}
 -(void)adjustFrame{
     CGFloat scrollContentHeight = self.scrollView.cl_contentSizeHeight;
     CGFloat scrollViewHeight = self.scrollView.cl_height - self.scrollViewOriginalInsets.top - self.scrollViewOriginalInsets.bottom;
-    self.cl_y = MAX(scrollContentHeight, scrollViewHeight);
-//    self.cl_y = scrollContentHeight;
+//    self.cl_y = MAX(scrollContentHeight, scrollViewHeight);
+    self.cl_y = scrollContentHeight;
+    self.overScrollView = scrollContentHeight > scrollViewHeight;
 }
 
 #pragma mark -overwrite
@@ -37,6 +58,13 @@
         [self.superview removeObserver:self forKeyPath:CLScrollViewContentSizeKeyPath];
     }
     if (newSuperview) {
+        if ([newSuperview isKindOfClass:[UITableView class]]) {
+            UITableView *tableView = (UITableView *)newSuperview;
+            if (tableView.tableFooterView.cl_height < 0.01) {
+                UIView *emptyView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, 0.01)];
+                tableView.tableFooterView = emptyView;
+            }
+        }
         [newSuperview addObserver:self forKeyPath:CLScrollViewContentSizeKeyPath options:NSKeyValueObservingOptionNew context:nil];
         [self adjustFrame];
     }
@@ -60,18 +88,16 @@
 -(CGFloat)showProgress:(UIEdgeInsets)scrollViewInsets scrollViewOffset:(CGPoint)offset{
 
     CGFloat willShowOffsetY = self.cl_y - self.scrollView.cl_height;
-    if (offset.y >= willShowOffsetY && self.cl_height != 0) {
-        if (self.isLoadingWhenShow) {
-            return 1.0f;
-        }else{
-            CGFloat progress = (offset.y-willShowOffsetY) / self.cl_height;
-            return progress;
-        }
+    if (offset.y >= willShowOffsetY && self.cl_height != 0 && self.isOverScrollView) {
+        CGFloat progress = (offset.y-willShowOffsetY) / self.cl_height;
+        return progress;
     }else{
         return -1;
     }
 }
-
+-(void)refreshViewChangeUIWhenNormal{
+    [self adjustFrame];
+}
 -(void)refreshViewChangeUIWhenFinishLoading{
     self.scrollView.cl_contentInsetBottom = self.scrollViewOriginalInsets.bottom;
 }
@@ -79,22 +105,17 @@
     
 }
 -(void)refreshViewChangeUIWhenLoading{
-    [UIView animateWithDuration:self.isLoadingWhenShow ? CLRefreshAnimationDurationZero : CLRefreshAnimationDurationFast animations:^{
+    [UIView animateWithDuration:CLRefreshAnimationDurationFast animations:^{
         CGFloat bottom = self.cl_height + self.scrollViewOriginalInsets.bottom;
         self.scrollView.cl_contentInsetBottom = bottom;
     }];
 }
-
-
 -(void)layoutSubviews{
     [super layoutSubviews];
-    CGFloat padding = 5.0f;
-    CGFloat loadingViewWH = self.cl_height - 2 * padding;
-    CGFloat centerX = (self.cl_width - loadingViewWH) /2 ;
-    CGFloat centerY = (self.cl_height - loadingViewWH) / 2;
-    CGRect loadingViewFrame = CGRectMake(centerX, centerY, loadingViewWH, loadingViewWH);
-    self.loadingView.frame = loadingViewFrame;
+    self.loadButton.frame = self.bounds;
 }
+
+
 
 
 @end

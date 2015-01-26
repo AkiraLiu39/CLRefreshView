@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef enum {
+    CLRefreshTypeSimpleHeader = 1,
+    CLRefreshTypeFloatHeader = 1 << 1,
+    CLRefreshTypeSimpleFooter = 1 << 2
+}CLRefreshType;
 @interface CLTableViewController : UITableViewController
-
+@property (nonatomic,assign) CLRefreshType refreshType;
 @end

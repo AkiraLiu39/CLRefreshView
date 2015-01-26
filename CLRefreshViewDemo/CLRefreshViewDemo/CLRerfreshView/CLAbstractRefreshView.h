@@ -17,6 +17,7 @@ CLRefreshViewStateLoading
 @protocol CLRefreshControl <NSObject>
 
 @optional
+-(void)refreshViewChangeUIWhenNormal;
 -(void)refreshViewChangeUIWhenWillLoading;
 -(void)refreshViewChangeUIWhenLoading;
 -(void)refreshViewChangeUIWhenFinishLoading;

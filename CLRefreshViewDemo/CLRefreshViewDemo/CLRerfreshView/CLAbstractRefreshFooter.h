@@ -9,6 +9,6 @@
 #import "CLAbstractRefreshView.h"
 
 @interface CLAbstractRefreshFooter : CLAbstractRefreshView
-//是否只要在页面上刚好显示出来就加载 默认为NO
-@property (nonatomic,assign,getter=isLoadingWhenShow) BOOL loadingWhenShow;
+@property (nonatomic,assign,getter=isOverScrollView) BOOL overScrollView;
+@property (nonatomic,weak) UIButton *loadButton;
 @end

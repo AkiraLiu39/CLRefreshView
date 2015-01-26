@@ -43,7 +43,7 @@
     CGContextAddArc(context, centerX, centerY, cycleRadius, 0, 2 * M_PI, 1);
     CGContextFillPath(context);
     
-    CGFloat willShowMidCycleProgress = 0.6f;
+    CGFloat willShowMidCycleProgress = 0.5f;
     if (self.showProgress >= willShowMidCycleProgress) {
         CGFloat midProgress =(self.showProgress - willShowMidCycleProgress) / (1.0 - willShowMidCycleProgress);
         CGFloat midCycleRadius = smallCycleMaxRadius + 2.5f;

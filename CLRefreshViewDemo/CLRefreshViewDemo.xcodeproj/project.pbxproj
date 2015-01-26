@@ -24,7 +24,10 @@
 		586224DB1A7533A2006DEC19 /* UIScrollView+CLRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224D01A7533A2006DEC19 /* UIScrollView+CLRefreshView.m */; };
 		586224DC1A7533A2006DEC19 /* UIView+CLCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224D21A7533A2006DEC19 /* UIView+CLCommon.m */; };
 		586224DF1A753588006DEC19 /* CLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224DE1A753588006DEC19 /* CLTableViewController.m */; };
-		586224E21A753FD4006DEC19 /* CLBaiscRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224E11A753FD4006DEC19 /* CLBaiscRefreshHeader.m */; };
+		586224E21A753FD4006DEC19 /* CLSimpleRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224E11A753FD4006DEC19 /* CLSimpleRefreshHeader.m */; };
+		5872AE721A75D1A500DC1555 /* CLMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5872AE711A75D1A500DC1555 /* CLMenuController.m */; };
+		5872AE751A760C5000DC1555 /* CLSimpleFloatRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5872AE741A760C5000DC1555 /* CLSimpleFloatRefreshHeader.m */; };
+		5872AE781A76301600DC1555 /* CLSimpleRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5872AE771A76301600DC1555 /* CLSimpleRefreshFooter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,8 +74,14 @@
 		586224D21A7533A2006DEC19 /* UIView+CLCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CLCommon.m"; sourceTree = "<group>"; };
 		586224DD1A753588006DEC19 /* CLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTableViewController.h; sourceTree = "<group>"; };
 		586224DE1A753588006DEC19 /* CLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTableViewController.m; sourceTree = "<group>"; };
-		586224E01A753FD4006DEC19 /* CLBaiscRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBaiscRefreshHeader.h; sourceTree = "<group>"; };
-		586224E11A753FD4006DEC19 /* CLBaiscRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBaiscRefreshHeader.m; sourceTree = "<group>"; };
+		586224E01A753FD4006DEC19 /* CLSimpleRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSimpleRefreshHeader.h; sourceTree = "<group>"; };
+		586224E11A753FD4006DEC19 /* CLSimpleRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSimpleRefreshHeader.m; sourceTree = "<group>"; };
+		5872AE701A75D1A500DC1555 /* CLMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMenuController.h; sourceTree = "<group>"; };
+		5872AE711A75D1A500DC1555 /* CLMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMenuController.m; sourceTree = "<group>"; };
+		5872AE731A760C5000DC1555 /* CLSimpleFloatRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSimpleFloatRefreshHeader.h; sourceTree = "<group>"; };
+		5872AE741A760C5000DC1555 /* CLSimpleFloatRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSimpleFloatRefreshHeader.m; sourceTree = "<group>"; };
+		5872AE761A76301600DC1555 /* CLSimpleRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSimpleRefreshFooter.h; sourceTree = "<group>"; };
+		5872AE771A76301600DC1555 /* CLSimpleRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSimpleRefreshFooter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +175,8 @@
 			children = (
 				586224DD1A753588006DEC19 /* CLTableViewController.h */,
 				586224DE1A753588006DEC19 /* CLTableViewController.m */,
+				5872AE701A75D1A500DC1555 /* CLMenuController.h */,
+				5872AE711A75D1A500DC1555 /* CLMenuController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -200,8 +211,12 @@
 				586224D21A7533A2006DEC19 /* UIView+CLCommon.m */,
 				586224C71A7533A2006DEC19 /* CLCircleLoadingView.h */,
 				586224C81A7533A2006DEC19 /* CLCircleLoadingView.m */,
-				586224E01A753FD4006DEC19 /* CLBaiscRefreshHeader.h */,
-				586224E11A753FD4006DEC19 /* CLBaiscRefreshHeader.m */,
+				586224E01A753FD4006DEC19 /* CLSimpleRefreshHeader.h */,
+				586224E11A753FD4006DEC19 /* CLSimpleRefreshHeader.m */,
+				5872AE731A760C5000DC1555 /* CLSimpleFloatRefreshHeader.h */,
+				5872AE741A760C5000DC1555 /* CLSimpleFloatRefreshHeader.m */,
+				5872AE761A76301600DC1555 /* CLSimpleRefreshFooter.h */,
+				5872AE771A76301600DC1555 /* CLSimpleRefreshFooter.m */,
 			);
 			path = CLRerfreshView;
 			sourceTree = "<group>";
@@ -314,11 +329,14 @@
 				586224DC1A7533A2006DEC19 /* UIView+CLCommon.m in Sources */,
 				586224D71A7533A2006DEC19 /* CLCircleLoadingView.m in Sources */,
 				586224DA1A7533A2006DEC19 /* UIScrollView+CLCommon.m in Sources */,
-				586224E21A753FD4006DEC19 /* CLBaiscRefreshHeader.m in Sources */,
+				586224E21A753FD4006DEC19 /* CLSimpleRefreshHeader.m in Sources */,
 				586224D31A7533A2006DEC19 /* CLAbstractRefreshFloatHeader.m in Sources */,
 				586224981A753210006DEC19 /* main.m in Sources */,
 				586224D51A7533A2006DEC19 /* CLAbstractRefreshHeader.m in Sources */,
 				586224D61A7533A2006DEC19 /* CLAbstractRefreshView.m in Sources */,
+				5872AE721A75D1A500DC1555 /* CLMenuController.m in Sources */,
+				5872AE751A760C5000DC1555 /* CLSimpleFloatRefreshHeader.m in Sources */,
+				5872AE781A76301600DC1555 /* CLSimpleRefreshFooter.m in Sources */,
 				586224DB1A7533A2006DEC19 /* UIScrollView+CLRefreshView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -510,6 +528,7 @@
 				586224B71A753211006DEC19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		586224B81A753211006DEC19 /* Build configuration list for PBXNativeTarget "CLRefreshViewDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +537,7 @@
 				586224BA1A753211006DEC19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

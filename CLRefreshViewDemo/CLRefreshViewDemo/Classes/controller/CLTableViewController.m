@@ -10,7 +10,11 @@
 #import "UIScrollView+CLRefreshView.h"
 #import "UIScrollView+CLCommon.h"
 #import "UIView+CLCommon.h"
+#import "CLSimpleFloatRefreshHeader.h"
+#define kLoadOptionHeader 1
+#define kLoadOptionFooter 2
 NSString *const CLTableViewCellId = @"CellId";
+
 @interface CLTableViewController ()
 @property (nonatomic,strong) NSMutableArray *dataSource;
 
@@ -22,7 +26,7 @@ NSString *const CLTableViewCellId = @"CellId";
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -30,7 +34,7 @@ NSString *const CLTableViewCellId = @"CellId";
     if (!_dataSource) {
         _dataSource = [NSMutableArray array];
         for (int i=0; i<2; i++) {
-            [_dataSource addObject:[NSString stringWithFormat:@"%i",i]];
+            [_dataSource addObject:[NSString stringWithFormat:@"base data %i",i]];
         }
     }
     return _dataSource;
@@ -56,53 +60,84 @@ NSString *const CLTableViewCellId = @"CellId";
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-//    [self.tableView cl_refreshHeaderStartAction];
+    [self.tableView cl_refreshHeaderStartAction];
 }
 -(void)setupTabelCell{
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CLTableViewCellId];
     
 }
 -(void)setupRefresh{
+   
+    if ((self.refreshType & CLRefreshTypeSimpleHeader) == CLRefreshTypeSimpleHeader) {
+        [self setupSimpleHeader];
+    }
+    if ((self.refreshType & CLRefreshTypeFloatHeader) == CLRefreshTypeFloatHeader) {
+        [self setupFloatHeader];
+    }
+    if ((self.refreshType & CLRefreshTypeSimpleFooter) == CLRefreshTypeSimpleFooter) {
+        [self setupSimpleFooter];
+    }
+    
+}
+
+-(void)setupSimpleHeader{
     __weak typeof(self) weakSelf = self;
     [self.tableView cl_addRefreshHeaderViewWithAction:^{
-        dispatch_queue_t queue= dispatch_queue_create("com.unknown.refresh.demo", DISPATCH_QUEUE_SERIAL);
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), queue, ^{
-            NSLog(@" refresh over!! %f",weakSelf.tableView.cl_contentInsetTop);
-            NSLog(@"thread %i",[NSThread currentThread].isMainThread);
-            for (int i=0; i<10; i++) {
-                [weakSelf.dataSource addObject:[NSString stringWithFormat:@"%i",arc4random() % 10]];
-                
-            }
-            NSArray *arr = weakSelf.tableView.subviews;
-            [weakSelf.tableView reloadData];
-            dispatch_sync(dispatch_get_main_queue(), ^{
-                NSLog(@"thread %i",[NSThread currentThread].isMainThread);
-                [weakSelf.tableView cl_refreshHeaderFinishAction];
-            });
+        [weakSelf loadHeaderData:kLoadOptionHeader];
+    }];
+}
+
+-(void)setupFloatHeader{
+    __weak typeof(self) weakSelf = self;
+    CLAbstractRefreshHeader *header = [CLSimpleFloatRefreshHeader refreshView];
+    header.refreshAction = ^(){
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf loadHeaderData:kLoadOptionHeader];
+    };
+    [self.tableView cl_addRefreshHeaderView:header];
+}
+
+-(void)setupSimpleFooter{
+    __weak typeof(self) weakSelf = self;
+    [self.tableView cl_addRefreshFooterViewWithAction:^{
+        [weakSelf loadHeaderData:kLoadOptionFooter];
+    }];
+    
+}
+-(void)loadHeaderData:(int)option{
+    dispatch_queue_t queue= dispatch_queue_create("com.unknown.refresh.demo", DISPATCH_QUEUE_SERIAL);
+    NSString *format;
+    if (option == kLoadOptionHeader) {
+        format = @"header added %i";
+    }else if (option == kLoadOptionFooter){
+        format = @"footer added %i";
+    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), queue, ^{
+        NSLog(@" refresh over!!");
+        NSMutableArray *newDatas = [NSMutableArray array];
+        
+        for (int i=0; i<10; i++) {
+            [newDatas addObject:[NSString stringWithFormat:format,arc4random() % 10]];
+        }
+        if (option == kLoadOptionFooter) {
+            [self.dataSource addObjectsFromArray:newDatas];
+        }else if(option == kLoadOptionHeader){
+            [newDatas addObjectsFromArray:self.dataSource];
+            self.dataSource = newDatas;
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
             
         });
-    }];
-    
-    //    [self.tableView cl_refreshHeaderStartAction];
-    
-    [self.tableView cl_addRefreshFooterViewWithAction:^{
-        NSLog(@"footer refresh");
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            for (int i = 0; i<5; i++) {
-                [weakSelf.dataSource addObject:[NSString stringWithFormat:@"%i",arc4random() % 10]];
-            }
-            [weakSelf.tableView reloadData];
-            NSLog(@"footer refresh over");
-            [weakSelf.tableView cl_refreshFooterFinishAction];
-        });
+        if (option == kLoadOptionHeader) {
+            [self.tableView cl_refreshHeaderFinishAction];
+        }else{
+            [self.tableView cl_refreshFooterFinishAction];
+        }
+    });
+}
 
-    }];
-}
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 #pragma mark - Table view data source
 
@@ -130,54 +165,6 @@ NSString *const CLTableViewCellId = @"CellId";
     NSLog(@"<%@,%p> is dealloc",self.class,self);
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 
 @end

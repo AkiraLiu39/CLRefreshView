@@ -8,6 +8,6 @@
 
 #import "CLAbstractRefreshHeader.h"
 
-@interface CLBaiscRefreshHeader : CLAbstractRefreshHeader
-
+@interface CLSimpleRefreshHeader : CLAbstractRefreshHeader
+@property (nonatomic,weak) UILabel *textLabel;
 @end

@@ -7,9 +7,8 @@
 //
 
 #import "UIScrollView+CLRefreshView.h"
-#import "CLBaiscRefreshHeader.h"
-#import "CLAbstractRefreshFooter.h"
-#import "CLAbstractRefreshFloatHeader.h"
+#import "CLSimpleRefreshHeader.h"
+#import "CLSimpleRefreshFooter.h"
 #import <objc/runtime.h>
 
 
@@ -49,32 +48,44 @@ static char CLRefreshFooterViewKey;
     self.cl_refreshHeader = header;
 }
 -(void)cl_addRefreshFooterView:(CLAbstractRefreshFooter *)footer{
-    [self addSubview:footer];
+    [self insertSubview:footer atIndex:0];
     self.cl_refreshFooter = footer;
 }
 
 -(void)cl_addRefreshHeaderViewWithAction:(void(^)())action{
 
-    CLAbstractRefreshHeader *header = [CLBaiscRefreshHeader refreshView];
+    CLAbstractRefreshHeader *header = [CLSimpleRefreshHeader refreshView];
     header.refreshAction = action;
     [self cl_addRefreshHeaderView:header];
 }
 -(void)cl_addRefreshFooterViewWithAction:(void(^)())action{
-    CLAbstractRefreshFooter *footer = [CLAbstractRefreshFooter refreshView];
+    CLAbstractRefreshFooter *footer = [CLSimpleRefreshFooter refreshView];
     footer.refreshAction = action;
     [self cl_addRefreshFooterView:footer];
 }
 -(void)cl_refreshHeaderStartAction{
-    [self.cl_refreshHeader startRefresh];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.cl_refreshHeader startRefresh];
+    });
+    
 }
 -(void)cl_refreshHeaderFinishAction{
-    [self.cl_refreshHeader endRefresh];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.cl_refreshHeader endRefresh];
+    });
+    
 }
 -(void)cl_refreshFooterStartAction{
-    [self.cl_refreshFooter startRefresh];
+    dispatch_async(dispatch_get_main_queue(), ^{
+       [self.cl_refreshFooter startRefresh];
+    });
+    
 }
 -(void)cl_refreshFooterFinishAction{
-    [self.cl_refreshFooter endRefresh];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.cl_refreshFooter endRefresh];
+    });
+    
 }
 
 -(void)cl_removeRefreshHeaderView{
