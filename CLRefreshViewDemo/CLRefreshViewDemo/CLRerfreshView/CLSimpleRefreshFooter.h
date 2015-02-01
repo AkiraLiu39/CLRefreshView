@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 unknown. All rights reserved.
 //
 
-#import "CLAbstractRefreshFooter.h"
+#import "CLRefreshFooter.h"
 
-@interface CLSimpleRefreshFooter : CLAbstractRefreshFooter
+@interface CLSimpleRefreshFooter : CLRefreshFooter
 
 @end

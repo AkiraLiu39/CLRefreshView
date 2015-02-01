@@ -11,13 +11,16 @@
 #import "UIScrollView+CLCommon.h"
 #import "UIView+CLCommon.h"
 #import "CLSimpleFloatRefreshHeader.h"
+#import "CLSimpleAutoRefreshFooter.h"
+#import "CLBubbleRefreshHeader.h"
+#import "ClClockRefreshHeader.h"
 #define kLoadOptionHeader 1
 #define kLoadOptionFooter 2
 NSString *const CLTableViewCellId = @"CellId";
 
 @interface CLTableViewController ()
 @property (nonatomic,strong) NSMutableArray *dataSource;
-
+@property (nonatomic,assign) int loadCount;
 @end
 
 @implementation CLTableViewController
@@ -43,24 +46,15 @@ NSString *const CLTableViewCellId = @"CellId";
 {
     [super viewDidLoad];
 //    self.tableView.backgroundColor = [UIColor redColor];
-//    self.navigationController.navigationBar.translucent = YES;
     self.edgesForExtendedLayout = UIRectEdgeTop;
 //    self.automaticallyAdjustsScrollViewInsets = YES;
-//    UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, 0.1)];
-//    self.tableView.tableFooterView = footerView;
     [self setupTabelCell];
     [self setupRefresh];
-//    [self.tableView cl_refreshHeaderStartAction];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-//    [self.tableView cl_refreshHeaderStartAction];
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.tableView cl_refreshHeaderStartAction];
+//    [self.tableView cl_refreshFooterStartAction];
 }
 -(void)setupTabelCell{
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CLTableViewCellId];
@@ -77,6 +71,15 @@ NSString *const CLTableViewCellId = @"CellId";
     if ((self.refreshType & CLRefreshTypeSimpleFooter) == CLRefreshTypeSimpleFooter) {
         [self setupSimpleFooter];
     }
+    if ((self.refreshType & CLRefreshTypeAutoRefreshFooter) == CLRefreshTypeAutoRefreshFooter) {
+        [self setupAutoRefreshFooter];
+    }
+    if ((self.refreshType & CLRefreshTypeCustomLoadingView1) == CLRefreshTypeCustomLoadingView1) {
+        [self setupBubbleLoadingViewHeader];
+    }
+    if ((self.refreshType & CLRefreshTypeCustomLoadingView2) == CLRefreshTypeCustomLoadingView2)  {
+        [self setupClockLoadingViewHeader];
+    }
     
 }
 
@@ -89,7 +92,7 @@ NSString *const CLTableViewCellId = @"CellId";
 
 -(void)setupFloatHeader{
     __weak typeof(self) weakSelf = self;
-    CLAbstractRefreshHeader *header = [CLSimpleFloatRefreshHeader refreshView];
+    CLRefreshHeader *header = [CLSimpleFloatRefreshHeader refreshView];
     header.refreshAction = ^(){
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf loadHeaderData:kLoadOptionHeader];
@@ -104,6 +107,35 @@ NSString *const CLTableViewCellId = @"CellId";
     }];
     
 }
+-(void)setupAutoRefreshFooter{
+    __weak typeof(self) weakSelf = self;
+    CLRefreshFooter *footer = [CLSimpleAutoRefreshFooter refreshView];
+    footer.refreshAction = ^(){
+        [weakSelf loadHeaderData:kLoadOptionFooter];
+    };
+    [self.tableView cl_addRefreshFooterView:footer];
+}
+
+-(void)setupBubbleLoadingViewHeader{
+    __weak typeof(self) weakSelf = self;
+    CLRefreshHeader *header = [CLBubbleRefreshHeader refreshView];
+    header.cl_height = 40.0f;
+    header.refreshAction = ^(){
+        [weakSelf loadHeaderData:kLoadOptionHeader];
+    };
+    [self.tableView cl_addRefreshHeaderView:header];
+}
+
+-(void)setupClockLoadingViewHeader{
+    __weak typeof(self) weakSelf = self;
+    CLRefreshHeader *header = [ClClockRefreshHeader refreshView];
+//    header.cl_height = 40.0f;
+    header.refreshAction = ^(){
+        [weakSelf loadHeaderData:kLoadOptionHeader];
+    };
+    [self.tableView cl_addRefreshHeaderView:header];
+}
+
 -(void)loadHeaderData:(int)option{
     dispatch_queue_t queue= dispatch_queue_create("com.unknown.refresh.demo", DISPATCH_QUEUE_SERIAL);
     NSString *format;
@@ -113,10 +145,14 @@ NSString *const CLTableViewCellId = @"CellId";
         format = @"footer added %i";
     }
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), queue, ^{
-        NSLog(@" refresh over!!");
         NSMutableArray *newDatas = [NSMutableArray array];
-        
-        for (int i=0; i<10; i++) {
+        int recoderCount;
+        if (self.loadCount > 1) {
+            recoderCount = 5;
+        }else{
+            recoderCount = 10;
+        }
+        for (int i=0; i<recoderCount; i++) {
             [newDatas addObject:[NSString stringWithFormat:format,arc4random() % 10]];
         }
         if (option == kLoadOptionFooter) {
@@ -132,15 +168,18 @@ NSString *const CLTableViewCellId = @"CellId";
         if (option == kLoadOptionHeader) {
             [self.tableView cl_refreshHeaderFinishAction];
         }else{
+            if ((self.refreshType & CLRefreshTypeAutoRefreshFooter) == CLRefreshTypeAutoRefreshFooter) {
+                self.tableView.cl_refreshFooterAutoLoad = newDatas.count > 9;
+            }
             [self.tableView cl_refreshFooterFinishAction];
         }
+        self.loadCount++;
     });
 }
 
 
 
 #pragma mark - Table view data source
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -158,8 +197,8 @@ NSString *const CLTableViewCellId = @"CellId";
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"click");
-    [self.tableView cl_refreshHeaderStartAction];
+//    [self.tableView cl_refreshHeaderStartAction];
+//    [self.tableView cl_removeRefreshFooter];
 }
 -(void)dealloc{
     NSLog(@"<%@,%p> is dealloc",self.class,self);

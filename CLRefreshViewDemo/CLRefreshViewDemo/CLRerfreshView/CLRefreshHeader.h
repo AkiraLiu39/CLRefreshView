@@ -7,6 +7,6 @@
 //
 
 #import "CLAbstractRefreshView.h"
-@interface CLAbstractRefreshHeader : CLAbstractRefreshView
+@interface CLRefreshHeader : CLAbstractRefreshView
 
 @end

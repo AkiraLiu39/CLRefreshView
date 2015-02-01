@@ -10,7 +10,10 @@
 typedef enum {
     CLRefreshTypeSimpleHeader = 1,
     CLRefreshTypeFloatHeader = 1 << 1,
-    CLRefreshTypeSimpleFooter = 1 << 2
+    CLRefreshTypeSimpleFooter = 1 << 2,
+    CLRefreshTypeAutoRefreshFooter = 1 << 3,
+    CLRefreshTypeCustomLoadingView1 = 1 << 4,
+    CLRefreshTypeCustomLoadingView2 = 1 << 5
 }CLRefreshType;
 @interface CLTableViewController : UITableViewController
 @property (nonatomic,assign) CLRefreshType refreshType;

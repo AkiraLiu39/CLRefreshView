@@ -6,12 +6,12 @@
 //  Copyright (c) 2015年 unknown. All rights reserved.
 //
 
-#import "CLAbstractRefreshHeader.h"
+#import "CLRefreshHeader.h"
 #import "CLCircleLoadingView.h"
 #import "UIView+CLCommon.h"
 #import "UIScrollView+CLCommon.h"
 #import "CLRefreshViewConstant.h"
-@implementation CLAbstractRefreshHeader
+@implementation CLRefreshHeader
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -38,10 +38,10 @@
     return CGPointMake(0, -self.scrollViewOriginalInsets.top - self.cl_height);
 }
 -(void)refreshViewChangeUIWhenNormal{
-    
+    [super refreshViewChangeUIWhenNormal];
 }
 -(void)refreshViewChangeUIWhenFinishLoading{
-    
+    [super refreshViewChangeUIWhenFinishLoading];
     if (self.scrollViewOriginalInsets.top == 0) {
         self.scrollView.cl_contentInsetTop = 0;
     }else if (self.scrollViewOriginalInsets.top == self.scrollView.cl_contentInsetTop){
@@ -51,9 +51,10 @@
     }
 }
 -(void)refreshViewChangeUIWhenWillLoading{
-    
+    [super refreshViewChangeUIWhenWillLoading];
 }
 -(void)refreshViewChangeUIWhenLoading{
+    [super refreshViewChangeUIWhenLoading];
     CGFloat top = self.scrollViewOriginalInsets.top + self.cl_height;
     
     [UIView animateWithDuration:CLRefreshAnimationDurationNormal animations:^{

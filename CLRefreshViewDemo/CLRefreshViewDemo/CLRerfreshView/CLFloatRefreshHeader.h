@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 unknown. All rights reserved.
 //
 
-#import "CLAbstractRefreshHeader.h"
+#import "CLRefreshHeader.h"
 
-@interface CLAbstractRefreshFloatHeader : CLAbstractRefreshHeader
+@interface CLFloatRefreshHeader : CLRefreshHeader
 
 @end

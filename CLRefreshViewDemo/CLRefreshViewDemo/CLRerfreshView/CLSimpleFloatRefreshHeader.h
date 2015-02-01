@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 unknown. All rights reserved.
 //
 
-#import "CLAbstractRefreshFloatHeader.h"
+#import "CLFloatRefreshHeader.h"
 
-@interface CLSimpleFloatRefreshHeader : CLAbstractRefreshFloatHeader
+@interface CLSimpleFloatRefreshHeader : CLFloatRefreshHeader
 @property (nonatomic,weak) UILabel *textLabel;
 @end

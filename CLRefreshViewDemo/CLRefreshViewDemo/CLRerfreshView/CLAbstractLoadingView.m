@@ -8,8 +8,12 @@
 
 #import "CLAbstractLoadingView.h"
 #import "UIView+CLCommon.h"
-
+#import "CLRefreshViewConstant.h"
 @implementation CLAbstractLoadingView
+
+const CGFloat CLRefreshLoadingViewMaxProgress = 1.0f;
+
+const CGFloat CLRefreshLoadingViewMinProgress = 0.0f;
 +(instancetype)loadingView{
     return [[self alloc]init];
 }
@@ -21,18 +25,25 @@
     }
     return self;
 }
+
 -(void)setShowProgress:(CGFloat)showProgess{
+    if (showProgess < CLRefreshLoadingViewMinProgress) {
+        showProgess = CLRefreshLoadingViewMinProgress;
+    }else if (showProgess > CLRefreshLoadingViewMaxProgress){
+        showProgess = CLRefreshLoadingViewMaxProgress;
+    }
     _showProgress = showProgess;
-    [self setNeedsDisplay];
+    if (!self.isHidden && self.alpha > 0.01) {
+        [self setNeedsDisplay];
+    }
 }
 
-
-
--(void)startAnimation{}
+-(void)startAnimation{
+    if (self.isHidden || self.alpha < 0.01) {
+        return;
+    }
+}
 -(void)stopAnimation{
     [self.layer removeAllAnimations];
-}
--(void)dealloc{
-    NSLog(@"<%@,%p> dealloc",self.class,self);
 }
 @end

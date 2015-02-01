@@ -74,7 +74,7 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    int tag = ((UIView *)sender).tag;
+    int tag = (int)((UIView *)sender).tag;
     CLTableViewController *dvc = segue.destinationViewController;
     dvc.title = [((UITableViewCell *)sender).textLabel.text capitalizedString];
     dvc.refreshType = tag;

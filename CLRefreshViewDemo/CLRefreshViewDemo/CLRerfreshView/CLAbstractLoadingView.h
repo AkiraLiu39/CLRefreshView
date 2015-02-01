@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface CLAbstractLoadingView : UIView
-@property (nonatomic,assign) CGFloat loadProgress;
+UIKIT_EXTERN const CGFloat CLRefreshLoadingViewMaxProgress;
+
+UIKIT_EXTERN const CGFloat CLRefreshLoadingViewMinProgress;
+
 @property (nonatomic,assign) CGFloat showProgress;
 +(instancetype)loadingView;
 

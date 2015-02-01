@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-@class CLAbstractRefreshHeader;
-@class CLAbstractRefreshFooter;
+@class CLRefreshHeader;
+@class CLRefreshFooter;
 @interface UIScrollView()
-@property (nonatomic,weak) CLAbstractRefreshHeader *cl_refreshHeader;
-@property (nonatomic,weak) CLAbstractRefreshFooter *cl_refreshFooter;
+@property (nonatomic,weak) CLRefreshHeader *cl_refreshHeader;
+@property (nonatomic,weak) CLRefreshFooter *cl_refreshFooter;
 @end;
 
 @interface UIScrollView (CLRefreshView)
@@ -24,16 +24,19 @@
 
 -(void)cl_refreshHeaderFinishAction;
 
--(void)cl_addRefreshHeaderView:(CLAbstractRefreshHeader *)header;
+-(void)cl_addRefreshHeaderView:(CLRefreshHeader *)header;
 
--(void)cl_addRefreshFooterView:(CLAbstractRefreshFooter *)header;
+-(void)cl_addRefreshFooterView:(CLRefreshFooter *)header;
 
 -(void)cl_refreshFooterStartAction;
 
 -(void)cl_refreshFooterFinishAction;
 
--(void)cl_removeRefreshHeaderView;
+-(void)cl_removeRefreshHeader;
 
--(void)cl_removeRefreshFooterView;
+-(void)cl_removeRefreshFooter;
 
+-(void)setCl_refreshFooterAutoLoad:(BOOL)autoLoad;
+
+-(BOOL)cl_refreshFooterAutoLoad;
 @end

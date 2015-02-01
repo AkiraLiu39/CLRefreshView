@@ -68,14 +68,12 @@
     if (showProgress == -1) {
         return;
     }
-    showProgress = showProgress > 1.0f ? 1.0f: showProgress;
-    
     if (self.scrollView.isDragging) {
         //未松手
         self.loadingView.showProgress = showProgress;
-        if (showProgress == 1.0f && self.state == CLRefreshViewStateNormal) {
+        if (showProgress >= CLRefreshLoadingViewMaxProgress && self.state == CLRefreshViewStateNormal) {
             self.state = CLRefreshViewStateWillLoading;
-        }else if (showProgress != 1.0f && self.state == CLRefreshViewStateWillLoading){
+        }else if (showProgress < CLRefreshLoadingViewMaxProgress && self.state == CLRefreshViewStateWillLoading){
             self.state = CLRefreshViewStateNormal;
         }
     }else{
@@ -99,35 +97,25 @@
     
     if (self.state == CLRefreshViewStateNormal) {
         if (self.oldState == CLRefreshViewStateLoading) {
+            [self.loadingView stopAnimation];
+            self.loadingView.showProgress = CLRefreshLoadingViewMinProgress;
+            self.loadingView.hidden = YES;
             [UIView animateWithDuration:CLRefreshAnimationDurationNormal animations:^{
-                self.loadingView.showProgress = 0.0f;
-                self.loadingView.hidden = YES;
-                if ([self respondsToSelector:@selector(refreshViewChangeUIWhenFinishLoading)]) {
-                    [self refreshViewChangeUIWhenFinishLoading];
-                }
+                [self refreshViewChangeUIWhenFinishLoading];
             } completion:^(BOOL finished) {
                 self.loadingView.hidden = NO;
-                if([self respondsToSelector:@selector(refreshViewChangeUIWhenNormal)]){
-                    [self refreshViewChangeUIWhenNormal];
-                }
-            }];
-            [self.loadingView stopAnimation];
-        }else{
-            if([self respondsToSelector:@selector(refreshViewChangeUIWhenNormal)]){
                 [self refreshViewChangeUIWhenNormal];
-            }
-            
+            }];
+        }else{
+            [self refreshViewChangeUIWhenNormal];
         }
-        
     }else if(self.state == CLRefreshViewStateWillLoading){
-        if ([self respondsToSelector:@selector(refreshViewChangeUIWhenWillLoading)]) {
-            [self refreshViewChangeUIWhenWillLoading];
-        }
+        [self refreshViewChangeUIWhenWillLoading];
     }else if (self.state == CLRefreshViewStateLoading){
+        self.loadingView.hidden = NO;
+        self.loadingView.showProgress = CLRefreshLoadingViewMaxProgress;
         [self.loadingView startAnimation];
-        if ([self respondsToSelector:@selector(refreshViewChangeUIWhenLoading)]) {
-            [self refreshViewChangeUIWhenLoading];
-        }
+        [self refreshViewChangeUIWhenLoading];
         if (self.refreshAction) {
             self.refreshAction();
         }
@@ -139,9 +127,7 @@
     self.state = CLRefreshViewStateNormal;
 }
 -(void)startRefresh{
-    
     if (self.window) {
-        self.loadingView.showProgress = 1.0f;
         self.state = CLRefreshViewStateLoading;
     }else{
         //drwaRect:中处理
@@ -155,17 +141,17 @@
 -(CGFloat)showProgress{
    return self.loadingView.showProgress;
 }
+-(void)refreshViewChangeUIWhenNormal{}
+-(void)refreshViewChangeUIWhenWillLoading{}
+-(void)refreshViewChangeUIWhenLoading{}
+-(void)refreshViewChangeUIWhenFinishLoading{}
 
 -(void)drawRect:(CGRect)rect{
     if (self.state == CLRefreshViewStateWillLoading) {
-        self.loadingView.showProgress = 1.0f;
-        self.state = CLRefreshViewStateLoading;
+        [self startRefresh];
     }else{
         self.state = CLRefreshViewStateNormal;
     }
-}
--(void)dealloc{
-    NSLog(@"<%@,%p> is dealloc",self.class,self);
 }
 -(void)layoutSubviews{
     [super layoutSubviews];

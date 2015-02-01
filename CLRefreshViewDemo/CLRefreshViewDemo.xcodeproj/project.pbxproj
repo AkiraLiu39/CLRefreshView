@@ -13,9 +13,9 @@
 		586224A31A753210006DEC19 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 586224A21A753210006DEC19 /* Images.xcassets */; };
 		586224A61A753210006DEC19 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 586224A41A753210006DEC19 /* LaunchScreen.xib */; };
 		586224B21A753211006DEC19 /* CLRefreshViewDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224B11A753211006DEC19 /* CLRefreshViewDemoTests.m */; };
-		586224D31A7533A2006DEC19 /* CLAbstractRefreshFloatHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224C01A7533A2006DEC19 /* CLAbstractRefreshFloatHeader.m */; };
-		586224D41A7533A2006DEC19 /* CLAbstractRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224C21A7533A2006DEC19 /* CLAbstractRefreshFooter.m */; };
-		586224D51A7533A2006DEC19 /* CLAbstractRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224C41A7533A2006DEC19 /* CLAbstractRefreshHeader.m */; };
+		586224D31A7533A2006DEC19 /* CLFloatRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224C01A7533A2006DEC19 /* CLFloatRefreshHeader.m */; };
+		586224D41A7533A2006DEC19 /* CLRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224C21A7533A2006DEC19 /* CLRefreshFooter.m */; };
+		586224D51A7533A2006DEC19 /* CLRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224C41A7533A2006DEC19 /* CLRefreshHeader.m */; };
 		586224D61A7533A2006DEC19 /* CLAbstractRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224C61A7533A2006DEC19 /* CLAbstractRefreshView.m */; };
 		586224D71A7533A2006DEC19 /* CLCircleLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224C81A7533A2006DEC19 /* CLCircleLoadingView.m */; };
 		586224D81A7533A2006DEC19 /* CLAbstractLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224CA1A7533A2006DEC19 /* CLAbstractLoadingView.m */; };
@@ -25,9 +25,15 @@
 		586224DC1A7533A2006DEC19 /* UIView+CLCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224D21A7533A2006DEC19 /* UIView+CLCommon.m */; };
 		586224DF1A753588006DEC19 /* CLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224DE1A753588006DEC19 /* CLTableViewController.m */; };
 		586224E21A753FD4006DEC19 /* CLSimpleRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224E11A753FD4006DEC19 /* CLSimpleRefreshHeader.m */; };
+		5869B3831A77689A00312F04 /* CLAutoRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5869B3821A77689A00312F04 /* CLAutoRefreshFooter.m */; };
+		586EB9781A7E19DB001D5D7B /* CLClockLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 586EB9771A7E19DB001D5D7B /* CLClockLoadingView.m */; };
+		586EB97B1A7E2F4A001D5D7B /* ClClockRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 586EB97A1A7E2F4A001D5D7B /* ClClockRefreshHeader.m */; };
 		5872AE721A75D1A500DC1555 /* CLMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5872AE711A75D1A500DC1555 /* CLMenuController.m */; };
 		5872AE751A760C5000DC1555 /* CLSimpleFloatRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5872AE741A760C5000DC1555 /* CLSimpleFloatRefreshHeader.m */; };
 		5872AE781A76301600DC1555 /* CLSimpleRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5872AE771A76301600DC1555 /* CLSimpleRefreshFooter.m */; };
+		58A91F981A7B2A5A008EEA8C /* CLSimpleAutoRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A91F971A7B2A5A008EEA8C /* CLSimpleAutoRefreshFooter.m */; };
+		58A91F9C1A7B310F008EEA8C /* CLBubbleLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A91F9B1A7B310F008EEA8C /* CLBubbleLoadingView.m */; };
+		58A91F9F1A7B6783008EEA8C /* CLBubbleRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A91F9E1A7B6783008EEA8C /* CLBubbleRefreshHeader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,12 +58,12 @@
 		586224AB1A753211006DEC19 /* CLRefreshViewDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CLRefreshViewDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		586224B01A753211006DEC19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		586224B11A753211006DEC19 /* CLRefreshViewDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLRefreshViewDemoTests.m; sourceTree = "<group>"; };
-		586224BF1A7533A2006DEC19 /* CLAbstractRefreshFloatHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAbstractRefreshFloatHeader.h; sourceTree = "<group>"; };
-		586224C01A7533A2006DEC19 /* CLAbstractRefreshFloatHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLAbstractRefreshFloatHeader.m; sourceTree = "<group>"; };
-		586224C11A7533A2006DEC19 /* CLAbstractRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAbstractRefreshFooter.h; sourceTree = "<group>"; };
-		586224C21A7533A2006DEC19 /* CLAbstractRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLAbstractRefreshFooter.m; sourceTree = "<group>"; };
-		586224C31A7533A2006DEC19 /* CLAbstractRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAbstractRefreshHeader.h; sourceTree = "<group>"; };
-		586224C41A7533A2006DEC19 /* CLAbstractRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLAbstractRefreshHeader.m; sourceTree = "<group>"; };
+		586224BF1A7533A2006DEC19 /* CLFloatRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLFloatRefreshHeader.h; sourceTree = "<group>"; };
+		586224C01A7533A2006DEC19 /* CLFloatRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLFloatRefreshHeader.m; sourceTree = "<group>"; };
+		586224C11A7533A2006DEC19 /* CLRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLRefreshFooter.h; sourceTree = "<group>"; };
+		586224C21A7533A2006DEC19 /* CLRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLRefreshFooter.m; sourceTree = "<group>"; };
+		586224C31A7533A2006DEC19 /* CLRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLRefreshHeader.h; sourceTree = "<group>"; };
+		586224C41A7533A2006DEC19 /* CLRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLRefreshHeader.m; sourceTree = "<group>"; };
 		586224C51A7533A2006DEC19 /* CLAbstractRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAbstractRefreshView.h; sourceTree = "<group>"; };
 		586224C61A7533A2006DEC19 /* CLAbstractRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLAbstractRefreshView.m; sourceTree = "<group>"; };
 		586224C71A7533A2006DEC19 /* CLCircleLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCircleLoadingView.h; sourceTree = "<group>"; };
@@ -76,12 +82,24 @@
 		586224DE1A753588006DEC19 /* CLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTableViewController.m; sourceTree = "<group>"; };
 		586224E01A753FD4006DEC19 /* CLSimpleRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSimpleRefreshHeader.h; sourceTree = "<group>"; };
 		586224E11A753FD4006DEC19 /* CLSimpleRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSimpleRefreshHeader.m; sourceTree = "<group>"; };
+		5869B3811A77689A00312F04 /* CLAutoRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAutoRefreshFooter.h; sourceTree = "<group>"; };
+		5869B3821A77689A00312F04 /* CLAutoRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLAutoRefreshFooter.m; sourceTree = "<group>"; };
+		586EB9761A7E19DB001D5D7B /* CLClockLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLClockLoadingView.h; sourceTree = "<group>"; };
+		586EB9771A7E19DB001D5D7B /* CLClockLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLClockLoadingView.m; sourceTree = "<group>"; };
+		586EB9791A7E2F4A001D5D7B /* ClClockRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClClockRefreshHeader.h; sourceTree = "<group>"; };
+		586EB97A1A7E2F4A001D5D7B /* ClClockRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClClockRefreshHeader.m; sourceTree = "<group>"; };
 		5872AE701A75D1A500DC1555 /* CLMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMenuController.h; sourceTree = "<group>"; };
 		5872AE711A75D1A500DC1555 /* CLMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMenuController.m; sourceTree = "<group>"; };
 		5872AE731A760C5000DC1555 /* CLSimpleFloatRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSimpleFloatRefreshHeader.h; sourceTree = "<group>"; };
 		5872AE741A760C5000DC1555 /* CLSimpleFloatRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSimpleFloatRefreshHeader.m; sourceTree = "<group>"; };
 		5872AE761A76301600DC1555 /* CLSimpleRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSimpleRefreshFooter.h; sourceTree = "<group>"; };
 		5872AE771A76301600DC1555 /* CLSimpleRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSimpleRefreshFooter.m; sourceTree = "<group>"; };
+		58A91F961A7B2A5A008EEA8C /* CLSimpleAutoRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSimpleAutoRefreshFooter.h; sourceTree = "<group>"; };
+		58A91F971A7B2A5A008EEA8C /* CLSimpleAutoRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSimpleAutoRefreshFooter.m; sourceTree = "<group>"; };
+		58A91F9A1A7B310F008EEA8C /* CLBubbleLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBubbleLoadingView.h; sourceTree = "<group>"; };
+		58A91F9B1A7B310F008EEA8C /* CLBubbleLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBubbleLoadingView.m; sourceTree = "<group>"; };
+		58A91F9D1A7B6783008EEA8C /* CLBubbleRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBubbleRefreshHeader.h; sourceTree = "<group>"; };
+		58A91F9E1A7B6783008EEA8C /* CLBubbleRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBubbleRefreshHeader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,8 +182,8 @@
 		586224BB1A75334C006DEC19 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				58A91F991A7B310F008EEA8C /* view */,
 				586224BC1A75334C006DEC19 /* controller */,
-				586224BD1A75334C006DEC19 /* view */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -181,22 +199,15 @@
 			path = controller;
 			sourceTree = "<group>";
 		};
-		586224BD1A75334C006DEC19 /* view */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
 		586224BE1A75335F006DEC19 /* CLRerfreshView */ = {
 			isa = PBXGroup;
 			children = (
-				586224BF1A7533A2006DEC19 /* CLAbstractRefreshFloatHeader.h */,
-				586224C01A7533A2006DEC19 /* CLAbstractRefreshFloatHeader.m */,
-				586224C11A7533A2006DEC19 /* CLAbstractRefreshFooter.h */,
-				586224C21A7533A2006DEC19 /* CLAbstractRefreshFooter.m */,
-				586224C31A7533A2006DEC19 /* CLAbstractRefreshHeader.h */,
-				586224C41A7533A2006DEC19 /* CLAbstractRefreshHeader.m */,
+				586224BF1A7533A2006DEC19 /* CLFloatRefreshHeader.h */,
+				586224C01A7533A2006DEC19 /* CLFloatRefreshHeader.m */,
+				586224C11A7533A2006DEC19 /* CLRefreshFooter.h */,
+				586224C21A7533A2006DEC19 /* CLRefreshFooter.m */,
+				586224C31A7533A2006DEC19 /* CLRefreshHeader.h */,
+				586224C41A7533A2006DEC19 /* CLRefreshHeader.m */,
 				586224C51A7533A2006DEC19 /* CLAbstractRefreshView.h */,
 				586224C61A7533A2006DEC19 /* CLAbstractRefreshView.m */,
 				586224C91A7533A2006DEC19 /* CLAbstractLoadingView.h */,
@@ -217,8 +228,27 @@
 				5872AE741A760C5000DC1555 /* CLSimpleFloatRefreshHeader.m */,
 				5872AE761A76301600DC1555 /* CLSimpleRefreshFooter.h */,
 				5872AE771A76301600DC1555 /* CLSimpleRefreshFooter.m */,
+				5869B3811A77689A00312F04 /* CLAutoRefreshFooter.h */,
+				5869B3821A77689A00312F04 /* CLAutoRefreshFooter.m */,
+				58A91F961A7B2A5A008EEA8C /* CLSimpleAutoRefreshFooter.h */,
+				58A91F971A7B2A5A008EEA8C /* CLSimpleAutoRefreshFooter.m */,
 			);
 			path = CLRerfreshView;
+			sourceTree = "<group>";
+		};
+		58A91F991A7B310F008EEA8C /* view */ = {
+			isa = PBXGroup;
+			children = (
+				58A91F9A1A7B310F008EEA8C /* CLBubbleLoadingView.h */,
+				58A91F9B1A7B310F008EEA8C /* CLBubbleLoadingView.m */,
+				58A91F9D1A7B6783008EEA8C /* CLBubbleRefreshHeader.h */,
+				58A91F9E1A7B6783008EEA8C /* CLBubbleRefreshHeader.m */,
+				586EB9761A7E19DB001D5D7B /* CLClockLoadingView.h */,
+				586EB9771A7E19DB001D5D7B /* CLClockLoadingView.m */,
+				586EB9791A7E2F4A001D5D7B /* ClClockRefreshHeader.h */,
+				586EB97A1A7E2F4A001D5D7B /* ClClockRefreshHeader.m */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,22 +351,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58A91F9C1A7B310F008EEA8C /* CLBubbleLoadingView.m in Sources */,
 				586224D91A7533A2006DEC19 /* CLRefreshViewConstant.m in Sources */,
 				5862249B1A753210006DEC19 /* AppDelegate.m in Sources */,
-				586224D41A7533A2006DEC19 /* CLAbstractRefreshFooter.m in Sources */,
+				586224D41A7533A2006DEC19 /* CLRefreshFooter.m in Sources */,
 				586224DF1A753588006DEC19 /* CLTableViewController.m in Sources */,
 				586224D81A7533A2006DEC19 /* CLAbstractLoadingView.m in Sources */,
 				586224DC1A7533A2006DEC19 /* UIView+CLCommon.m in Sources */,
+				58A91F9F1A7B6783008EEA8C /* CLBubbleRefreshHeader.m in Sources */,
 				586224D71A7533A2006DEC19 /* CLCircleLoadingView.m in Sources */,
 				586224DA1A7533A2006DEC19 /* UIScrollView+CLCommon.m in Sources */,
 				586224E21A753FD4006DEC19 /* CLSimpleRefreshHeader.m in Sources */,
-				586224D31A7533A2006DEC19 /* CLAbstractRefreshFloatHeader.m in Sources */,
+				586EB9781A7E19DB001D5D7B /* CLClockLoadingView.m in Sources */,
+				586224D31A7533A2006DEC19 /* CLFloatRefreshHeader.m in Sources */,
 				586224981A753210006DEC19 /* main.m in Sources */,
-				586224D51A7533A2006DEC19 /* CLAbstractRefreshHeader.m in Sources */,
+				586224D51A7533A2006DEC19 /* CLRefreshHeader.m in Sources */,
 				586224D61A7533A2006DEC19 /* CLAbstractRefreshView.m in Sources */,
 				5872AE721A75D1A500DC1555 /* CLMenuController.m in Sources */,
 				5872AE751A760C5000DC1555 /* CLSimpleFloatRefreshHeader.m in Sources */,
+				586EB97B1A7E2F4A001D5D7B /* ClClockRefreshHeader.m in Sources */,
 				5872AE781A76301600DC1555 /* CLSimpleRefreshFooter.m in Sources */,
+				5869B3831A77689A00312F04 /* CLAutoRefreshFooter.m in Sources */,
+				58A91F981A7B2A5A008EEA8C /* CLSimpleAutoRefreshFooter.m in Sources */,
 				586224DB1A7533A2006DEC19 /* UIScrollView+CLRefreshView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,6 +496,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CLRefreshViewDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -470,6 +507,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CLRefreshViewDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

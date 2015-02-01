@@ -6,12 +6,16 @@
 //  Copyright (c) 2015年 unknown. All rights reserved.
 //
 
-#import "CLAbstractRefreshFooter.h"
+#import "CLRefreshFooter.h"
 #import "UIView+CLCommon.h"
 #import "UIScrollView+CLCommon.h"
 #import "CLCircleLoadingView.h"
 #import "CLRefreshViewConstant.h"
-@implementation CLAbstractRefreshFooter
+
+@interface CLRefreshFooter()
+@property (nonatomic,assign,getter=isOverScrollView) BOOL overScrollView;
+@end
+@implementation CLRefreshFooter
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -19,9 +23,9 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.overScrollView = NO;
+        self.normalLoadButtonTitle = CLRefreshFooterLoadButtonTitle;
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.titleLabel.font = kCLRefreshFooterLoadButtonFont;
-        [btn setTitle:CLRefreshFooterLoadButtonTitle forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(startRefresh) forControlEvents:UIControlEventTouchUpInside];
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [self addSubview:btn];
@@ -29,24 +33,17 @@
     }
     return self;
 }
--(void)startRefresh{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.loadButton.hidden = YES;
-        self.loadingView.hidden = NO;
-    });
-    
-    [super startRefresh];
 
-}
 -(void)setOverScrollView:(BOOL)overScrollView{
     _overScrollView = overScrollView;
-    self.loadButton.hidden = overScrollView;
-    self.loadingView.hidden = !overScrollView;
+    if (self.state != CLRefreshViewStateLoading) {
+        self.loadButton.hidden = overScrollView;
+        self.loadingView.hidden = !overScrollView;
+    }
 }
 -(void)adjustFrame{
     CGFloat scrollContentHeight = self.scrollView.cl_contentSizeHeight;
     CGFloat scrollViewHeight = self.scrollView.cl_height - self.scrollViewOriginalInsets.top - self.scrollViewOriginalInsets.bottom;
-//    self.cl_y = MAX(scrollContentHeight, scrollViewHeight);
     self.cl_y = scrollContentHeight;
     self.overScrollView = scrollContentHeight > scrollViewHeight;
 }
@@ -78,15 +75,10 @@
     if ([CLScrollViewContentSizeKeyPath isEqualToString:keyPath]) {
         [self adjustFrame];
     }else if ([CLScrollViewContentOffsetKeyPath isEqualToString:keyPath]){
-        if (self.state == CLRefreshViewStateLoading) {
-            return;
-        }else{
-            [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-        }
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
 -(CGFloat)showProgress:(UIEdgeInsets)scrollViewInsets scrollViewOffset:(CGPoint)offset{
-
     CGFloat willShowOffsetY = self.cl_y - self.scrollView.cl_height;
     if (offset.y >= willShowOffsetY && self.cl_height != 0 && self.isOverScrollView) {
         CGFloat progress = (offset.y-willShowOffsetY) / self.cl_height;
@@ -96,15 +88,20 @@
     }
 }
 -(void)refreshViewChangeUIWhenNormal{
+    [super refreshViewChangeUIWhenNormal];
     [self adjustFrame];
+    
 }
 -(void)refreshViewChangeUIWhenFinishLoading{
+    [super refreshViewChangeUIWhenFinishLoading];
     self.scrollView.cl_contentInsetBottom = self.scrollViewOriginalInsets.bottom;
 }
 -(void)refreshViewChangeUIWhenWillLoading{
-    
+    [super refreshViewChangeUIWhenWillLoading];
 }
 -(void)refreshViewChangeUIWhenLoading{
+    [super refreshViewChangeUIWhenLoading];
+    self.loadButton.hidden = YES;
     [UIView animateWithDuration:CLRefreshAnimationDurationFast animations:^{
         CGFloat bottom = self.cl_height + self.scrollViewOriginalInsets.bottom;
         self.scrollView.cl_contentInsetBottom = bottom;
@@ -113,6 +110,11 @@
 -(void)layoutSubviews{
     [super layoutSubviews];
     self.loadButton.frame = self.bounds;
+}
+-(void)drawRect:(CGRect)rect{
+    [super drawRect:rect];
+    [self.loadButton setTitle:self.normalLoadButtonTitle forState:UIControlStateNormal];
+    
 }
 
 

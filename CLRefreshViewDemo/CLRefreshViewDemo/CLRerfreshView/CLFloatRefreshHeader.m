@@ -6,10 +6,10 @@
 //  Copyright (c) 2015年 unknown. All rights reserved.
 //
 
-#import "CLAbstractRefreshFloatHeader.h"
+#import "CLFloatRefreshHeader.h"
 #import "CLRefreshViewConstant.h"
 #import "UIView+CLCommon.h"
-@implementation CLAbstractRefreshFloatHeader
+@implementation CLFloatRefreshHeader
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     if([CLScrollViewContentOffsetKeyPath isEqualToString:keyPath]){

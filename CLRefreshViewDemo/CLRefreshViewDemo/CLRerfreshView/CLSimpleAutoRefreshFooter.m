@@ -1,27 +1,34 @@
 //
-//  CLSimpleRefreshFooter.m
+//  CLSimpleAutoRefreshFooter.m
 //  CLRefreshViewDemo
 //
-//  Created by 刘昶 on 15/1/26.
+//  Created by 刘昶 on 15/1/30.
 //  Copyright (c) 2015年 unknown. All rights reserved.
 //
 
-#import "CLSimpleRefreshFooter.h"
+#import "CLSimpleAutoRefreshFooter.h"
 #import "CLCircleLoadingView.h"
 #import "UIView+CLCommon.h"
-@implementation CLSimpleRefreshFooter
+#import "UIScrollView+CLCommon.h"
+@implementation CLSimpleAutoRefreshFooter
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        CLCircleLoadingView *loadingView = [CLCircleLoadingView loadingView];
-        [self addSubview:loadingView];
-        self.loadingView = loadingView;
+        [self setup];
     }
     return self;
 }
+-(void)setup{
+    CLAbstractLoadingView *loadView = [CLCircleLoadingView loadingView];
+    self.autoLoad = YES;
+    [self addSubview:loadView];
+    self.loadingView = loadView;
+    self.unAutoLoadButtonTitle = @"没有更多数据了，点我重新加载";
+}
+
 -(void)layoutSubviews{
     [super layoutSubviews];
-    CGFloat loadingViewWH = 30;
+    CGFloat loadingViewWH= 30;
     CGFloat centerX = (self.cl_width - loadingViewWH) /2 ;
     CGFloat centerY = (self.cl_height - loadingViewWH) / 2;
     CGRect loadingViewFrame = CGRectMake(centerX, centerY, loadingViewWH, loadingViewWH);

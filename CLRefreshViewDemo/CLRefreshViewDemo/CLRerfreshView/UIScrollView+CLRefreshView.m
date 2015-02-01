@@ -9,6 +9,7 @@
 #import "UIScrollView+CLRefreshView.h"
 #import "CLSimpleRefreshHeader.h"
 #import "CLSimpleRefreshFooter.h"
+#import "CLAutoRefreshFooter.h"
 #import <objc/runtime.h>
 
 
@@ -18,7 +19,7 @@
 static char CLRefreshHeaderViewKey;
 static char CLRefreshFooterViewKey;
 
--(void)setCl_refreshHeader:(CLAbstractRefreshHeader *)header{
+-(void)setCl_refreshHeader:(CLRefreshHeader *)header{
     [self willChangeValueForKey:@"CLRefreshHeaderViewKey"];
     objc_setAssociatedObject(self, &CLRefreshHeaderViewKey,
                              header,
@@ -26,11 +27,11 @@ static char CLRefreshFooterViewKey;
     [self didChangeValueForKey:@"CLRefreshHeaderViewKey"];
 }
 
--(CLAbstractRefreshHeader *)cl_refreshHeader{
+-(CLRefreshHeader *)cl_refreshHeader{
     return objc_getAssociatedObject(self, &CLRefreshHeaderViewKey);
 }
 
--(void)setCl_refreshFooter:(CLAbstractRefreshFooter *)footer{
+-(void)setCl_refreshFooter:(CLRefreshFooter *)footer{
     [self willChangeValueForKey:@"CLRefreshFooterViewKey"];
     objc_setAssociatedObject(self,
                              &CLRefreshFooterViewKey,
@@ -39,27 +40,29 @@ static char CLRefreshFooterViewKey;
     [self didChangeValueForKey:@"CLRefreshFooterViewKey"];
 }
 
--(CLAbstractRefreshFooter *)cl_refreshFooter{
+-(CLRefreshFooter *)cl_refreshFooter{
     return objc_getAssociatedObject(self, &CLRefreshFooterViewKey);
 }
 
--(void)cl_addRefreshHeaderView:(CLAbstractRefreshHeader *)header{
+-(void)cl_addRefreshHeaderView:(CLRefreshHeader *)header{
+    [self cl_removeRefreshHeader];
     [self insertSubview:header atIndex:0];
     self.cl_refreshHeader = header;
 }
--(void)cl_addRefreshFooterView:(CLAbstractRefreshFooter *)footer{
-    [self insertSubview:footer atIndex:0];
+-(void)cl_addRefreshFooterView:(CLRefreshFooter *)footer{
+    [self cl_removeRefreshFooter];
+    [self addSubview:footer];
     self.cl_refreshFooter = footer;
 }
 
 -(void)cl_addRefreshHeaderViewWithAction:(void(^)())action{
 
-    CLAbstractRefreshHeader *header = [CLSimpleRefreshHeader refreshView];
+    CLRefreshHeader *header = [CLSimpleRefreshHeader refreshView];
     header.refreshAction = action;
     [self cl_addRefreshHeaderView:header];
 }
 -(void)cl_addRefreshFooterViewWithAction:(void(^)())action{
-    CLAbstractRefreshFooter *footer = [CLSimpleRefreshFooter refreshView];
+    CLRefreshFooter *footer = [CLSimpleRefreshFooter refreshView];
     footer.refreshAction = action;
     [self cl_addRefreshFooterView:footer];
 }
@@ -88,13 +91,27 @@ static char CLRefreshFooterViewKey;
     
 }
 
--(void)cl_removeRefreshHeaderView{
+-(void)cl_removeRefreshHeader{
     [self.cl_refreshHeader removeFromSuperview];
     self.cl_refreshHeader = nil;
 }
 
--(void)cl_removeRefreshFooterView{
+-(void)cl_removeRefreshFooter{
     [self.cl_refreshFooter removeFromSuperview];
     self.cl_refreshFooter = nil;
+}
+
+-(void)setCl_refreshFooterAutoLoad:(BOOL)autoLoad{
+    if ([self.cl_refreshFooter isKindOfClass:[CLAutoRefreshFooter class]]) {
+        ((CLAutoRefreshFooter *)self.cl_refreshFooter).autoLoad = autoLoad;
+    }
+}
+
+-(BOOL)cl_refreshFooterAutoLoad{
+    if ([self.cl_refreshFooter isKindOfClass:[CLAutoRefreshFooter class]]) {
+        return ((CLAutoRefreshFooter *)self.cl_refreshFooter).autoLoad;
+    }else{
+        return false;
+    }
 }
 @end
