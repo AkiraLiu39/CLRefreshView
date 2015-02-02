@@ -23,17 +23,30 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.overScrollView = NO;
-        self.normalLoadButtonTitle = CLRefreshFooterLoadButtonTitle;
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.titleLabel.font = kCLRefreshFooterLoadButtonFont;
         [btn addTarget:self action:@selector(startRefresh) forControlEvents:UIControlEventTouchUpInside];
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [self addSubview:btn];
         self.loadButton = btn;
+        self.loadButtonFont = kCLRefreshFooterLoadButtonFont;
+        self.normalLoadButtonTitle = CLRefreshFooterLoadButtonTitle;
     }
     return self;
 }
-
+-(void)setLoadButtonFont:(UIFont *)loadButtonFont{
+    _loadButtonFont = loadButtonFont;
+    self.loadButton.titleLabel.font = loadButtonFont;
+}
+-(void)setLoadButton:(UIButton *)loadButton{
+    if (self.loadButton) {
+        [self.loadButton removeFromSuperview];
+    }
+    [self addSubview:loadButton];
+    _loadButton = loadButton;
+}
+-(void)setNormalLoadButtonTitle:(NSString *)normalLoadButtonTitle{
+    _normalLoadButtonTitle = normalLoadButtonTitle.copy;
+    [self.loadButton setTitle:normalLoadButtonTitle forState:UIControlStateNormal];
+}
 -(void)setOverScrollView:(BOOL)overScrollView{
     _overScrollView = overScrollView;
     if (self.state != CLRefreshViewStateLoading) {
@@ -113,8 +126,6 @@
 }
 -(void)drawRect:(CGRect)rect{
     [super drawRect:rect];
-    [self.loadButton setTitle:self.normalLoadButtonTitle forState:UIControlStateNormal];
-    
 }
 
 

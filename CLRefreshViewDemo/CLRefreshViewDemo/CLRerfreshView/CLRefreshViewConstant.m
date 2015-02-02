@@ -12,8 +12,6 @@ NSString *const CLScrollViewContentOffsetKeyPath = @"contentOffset";
 
 NSString *const CLScrollViewContentSizeKeyPath = @"contentSize";
 
-NSString *const CLLoadingViewRotationAnimationKey = @"rotation";
-
 NSString *const CLRefreshViewTextLabelnormalText = @"敢不敢再往下拉一点!?";
 
 NSString *const CLRefreshViewTextLabelWillLoadText = @"我错了,松手!快松手!";

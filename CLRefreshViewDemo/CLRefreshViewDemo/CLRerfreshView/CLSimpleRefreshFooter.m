@@ -14,7 +14,6 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         CLCircleLoadingView *loadingView = [CLCircleLoadingView loadingView];
-        [self addSubview:loadingView];
         self.loadingView = loadingView;
     }
     return self;

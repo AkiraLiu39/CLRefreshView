@@ -92,12 +92,10 @@ NSString *const CLTableViewCellId = @"CellId";
 
 -(void)setupFloatHeader{
     __weak typeof(self) weakSelf = self;
-    CLRefreshHeader *header = [CLSimpleFloatRefreshHeader refreshView];
-    header.refreshAction = ^(){
+    [self.tableView cl_addFloatRefreshHeaderViewWithAction:^{
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf loadHeaderData:kLoadOptionHeader];
-    };
-    [self.tableView cl_addRefreshHeaderView:header];
+    }];
 }
 
 -(void)setupSimpleFooter{
@@ -109,11 +107,9 @@ NSString *const CLTableViewCellId = @"CellId";
 }
 -(void)setupAutoRefreshFooter{
     __weak typeof(self) weakSelf = self;
-    CLRefreshFooter *footer = [CLSimpleAutoRefreshFooter refreshView];
-    footer.refreshAction = ^(){
+    [self.tableView cl_addAutoRefreshFooterViewWithAction:^{
         [weakSelf loadHeaderData:kLoadOptionFooter];
-    };
-    [self.tableView cl_addRefreshFooterView:footer];
+    }];
 }
 
 -(void)setupBubbleLoadingViewHeader{
@@ -129,7 +125,6 @@ NSString *const CLTableViewCellId = @"CellId";
 -(void)setupClockLoadingViewHeader{
     __weak typeof(self) weakSelf = self;
     CLRefreshHeader *header = [ClClockRefreshHeader refreshView];
-//    header.cl_height = 40.0f;
     header.refreshAction = ^(){
         [weakSelf loadHeaderData:kLoadOptionHeader];
     };
@@ -163,7 +158,6 @@ NSString *const CLTableViewCellId = @"CellId";
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
-            
         });
         if (option == kLoadOptionHeader) {
             [self.tableView cl_refreshHeaderFinishAction];

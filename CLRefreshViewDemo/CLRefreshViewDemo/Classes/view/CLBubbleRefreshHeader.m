@@ -15,7 +15,6 @@
     if (self = [super initWithFrame:frame]) {
         CLBubbleLoadingView *loadingView = [CLBubbleLoadingView loadingView];
         loadingView.bubbleColor = [[UIColor alloc]initWithRed:18.0f/255.0f green:132/255.0f blue:140/255.0f alpha:1];
-        [self addSubview:loadingView];
         self.loadingView = loadingView;
     }
     return self;

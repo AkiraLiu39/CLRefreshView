@@ -25,10 +25,8 @@
 }
 -(void)setup{
     CLAbstractLoadingView *loadingView = [CLCircleLoadingView loadingView];
-    [self addSubview:loadingView];
     self.loadingView = loadingView;
     UILabel *label = [[UILabel alloc]init];
-    label.text = CLRefreshViewTextLabelnormalText;
     label.font = [UIFont systemFontOfSize:14];
     label.textColor = [UIColor blackColor];
     label.backgroundColor = [UIColor clearColor];

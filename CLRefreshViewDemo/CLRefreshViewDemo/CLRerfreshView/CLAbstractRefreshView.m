@@ -89,14 +89,14 @@
     if (state == self.state) {
         return;
     }
-    _oldState = self.state;
+    _previousState = self.state;
     if (self.state != CLRefreshViewStateLoading) {
         _scrollViewOriginalInsets = self.scrollView.contentInset;
     }
     _state = state;
     
     if (self.state == CLRefreshViewStateNormal) {
-        if (self.oldState == CLRefreshViewStateLoading) {
+        if (self.previousState == CLRefreshViewStateLoading) {
             [self.loadingView stopAnimation];
             self.loadingView.showProgress = CLRefreshLoadingViewMinProgress;
             self.loadingView.hidden = YES;
@@ -140,6 +140,14 @@
 }
 -(CGFloat)showProgress{
    return self.loadingView.showProgress;
+}
+-(void)setLoadingView:(CLAbstractLoadingView *)loadingView{
+    if (self.loadingView) {
+        loadingView.showProgress = self.loadingView.showProgress;
+        [self.loadingView removeFromSuperview];
+    }
+    [self addSubview:loadingView];
+    _loadingView = loadingView;
 }
 -(void)refreshViewChangeUIWhenNormal{}
 -(void)refreshViewChangeUIWhenWillLoading{}

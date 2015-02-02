@@ -9,7 +9,8 @@
 #import "UIScrollView+CLRefreshView.h"
 #import "CLSimpleRefreshHeader.h"
 #import "CLSimpleRefreshFooter.h"
-#import "CLAutoRefreshFooter.h"
+#import "CLSimpleFloatRefreshHeader.h"
+#import "CLSimpleAutoRefreshFooter.h"
 #import <objc/runtime.h>
 
 
@@ -99,6 +100,18 @@ static char CLRefreshFooterViewKey;
 -(void)cl_removeRefreshFooter{
     [self.cl_refreshFooter removeFromSuperview];
     self.cl_refreshFooter = nil;
+}
+-(void)cl_addFloatRefreshHeaderViewWithAction:(void(^)())action{
+    
+    CLRefreshHeader *header = [CLSimpleFloatRefreshHeader refreshView];
+    header.refreshAction = action;
+    [self cl_addRefreshHeaderView:header];
+}
+
+-(void)cl_addAutoRefreshFooterViewWithAction:(void(^)())action{
+    CLRefreshFooter *footer = [CLSimpleAutoRefreshFooter refreshView];
+    footer.refreshAction = action;
+    [self cl_addRefreshFooterView:footer];
 }
 
 -(void)setCl_refreshFooterAutoLoad:(BOOL)autoLoad{

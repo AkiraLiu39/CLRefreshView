@@ -20,7 +20,6 @@
 }
 -(void)setup{
     CLAbstractLoadingView *loadingView = [CLCircleLoadingView loadingView];
-    [self addSubview:loadingView];
     self.loadingView = loadingView;
     UILabel *label = [[UILabel alloc]init];
     label.text = CLRefreshViewTextLabelnormalText;

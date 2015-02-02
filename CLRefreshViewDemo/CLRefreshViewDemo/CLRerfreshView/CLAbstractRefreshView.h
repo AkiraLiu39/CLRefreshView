@@ -28,11 +28,13 @@ CLRefreshViewStateLoading
 @property (nonatomic,assign,readonly) UIEdgeInsets scrollViewOriginalInsets;
 @property (nonatomic,copy) void (^refreshAction)();
 @property (nonatomic,assign) CLRefreshViewState state;
-@property (nonatomic,assign,readonly) CLRefreshViewState oldState;
+@property (nonatomic,assign,readonly) CLRefreshViewState previousState;
 @property (nonatomic,weak) CLAbstractLoadingView *loadingView;
 @property (nonatomic,assign,readonly) CGFloat showProgress;
 +(instancetype)refreshView;
+
 -(void)endRefresh;
+
 -(void)startRefresh;
 
 #pragma mark -子类实现
@@ -46,7 +48,7 @@ CLRefreshViewStateLoading
  */
 -(CGFloat)showProgress:(UIEdgeInsets)scrollViewInsets scrollViewOffset:(CGPoint)offset;
 /**
- *  控件将要显示的位置，由子类实现
+ *  控件将要显示的位置，由Header子类实现,Footer子类此方法无意义
  *
  *  @return 控件刚加入 scrollView 时将要显示的位置，默认返回(0,0)
  */

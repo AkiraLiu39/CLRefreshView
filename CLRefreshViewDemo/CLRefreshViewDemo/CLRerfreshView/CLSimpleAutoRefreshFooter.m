@@ -21,7 +21,6 @@
 -(void)setup{
     CLAbstractLoadingView *loadView = [CLCircleLoadingView loadingView];
     self.autoLoad = YES;
-    [self addSubview:loadView];
     self.loadingView = loadView;
     self.unAutoLoadButtonTitle = @"没有更多数据了，点我重新加载";
 }

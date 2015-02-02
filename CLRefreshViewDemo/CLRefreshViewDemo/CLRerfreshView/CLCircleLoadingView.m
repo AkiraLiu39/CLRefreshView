@@ -20,7 +20,7 @@
     rotationAnim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
     rotationAnim.repeatCount = INFINITY;
     rotationAnim.duration = 1.0f;
-    [self.layer addAnimation:rotationAnim forKey:CLLoadingViewRotationAnimationKey];
+    [self.layer addAnimation:rotationAnim forKey:@"rotation"];
 }
 
 - (void)drawRect:(CGRect)rect

@@ -9,17 +9,26 @@
 #import "CLAbstractRefreshView.h"
 
 @interface CLRefreshFooter : CLAbstractRefreshView
-
+/**
+ *  当显示内容并没有超出ScrollView高度时显示的加载按钮
+ */
 @property (nonatomic,weak) UIButton *loadButton;
+/**
+ *  按钮文字
+ */
 @property (nonatomic,copy) NSString *normalLoadButtonTitle;
 /**
- *  当前显示位置是否超出了scrollView的高度(scrollView.contentSize.height > scrollView.frame.height)
+ *  按钮字体
+ */
+@property (nonatomic,strong) UIFont *loadButtonFont;
+/**
+ *  当前ScrollView显示的内容是否超出了scrollView的高度(scrollView.contentSize.height > scrollView.frame.height)
  *
- *  @return <#return value description#>
+ *  @return ContentSize.height是否大于 ScrollView的高度
  */
 -(BOOL)isOverScrollView;
 /**
- *  当ScrollView.contentSize 发生变化时，调整自身位置
+ *  当ScrollView.contentSize 发生变化时，调整自身Frame
  */
 -(void)adjustFrame;
 

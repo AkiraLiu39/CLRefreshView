@@ -7,7 +7,9 @@
 //
 
 #import "CLAbstractLoadingView.h"
-
+/**
+ *  一个简单的圆圈LoadingView
+ */
 @interface CLCircleLoadingView : CLAbstractLoadingView
 
 @end

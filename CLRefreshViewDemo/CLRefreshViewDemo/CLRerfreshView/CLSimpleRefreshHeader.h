@@ -7,7 +7,9 @@
 //
 
 #import "CLRefreshHeader.h"
-
+/**
+ *  简单的上拉加载头部，事列用
+ */
 @interface CLSimpleRefreshHeader : CLRefreshHeader
 @property (nonatomic,weak) UILabel *textLabel;
 @end
