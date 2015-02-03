@@ -85,6 +85,9 @@ __weak typeof(self) weakSelf = self;
 
 ***
 ### 自定义
+![(bubbleHeader)](https://github.com/unknownBug/CLRefreshView/blob/master/Screenshots/bubble.gif "bubbleHeader")
+![(clockHeader)](https://github.com/unknownBug/CLRefreshView/blob/master/Screenshots/clock.gif "clockHeader")
+
 * 自定义Loading显示样式
 
   可继承`CLAbstractLoadingView`,然后自己实现一些效果.
