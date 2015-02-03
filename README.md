@@ -17,8 +17,6 @@
 }];
 ```
 
-
-***
 * 浮动下拉刷新头部控件
 
 ***
@@ -29,8 +27,10 @@
   //do some thing
 }];
 ```
+
+* 上拉加载底部控件
+
 ***
-*上拉加载底部控件
 ![(floatHeader)](https://github.com/unknownBug/CLRefreshView/blob/master/Screenshots/simpleFooter.gif "上拉加载底部控件")
 ```objc
 [self.tableView cl_addRefreshFooterViewWithAction:^{
@@ -38,7 +38,7 @@
 }];
 ```
 
-*底部自动加载控件
+* 底部自动加载控件
 ```objc
 [self.tableView cl_addAutoRefreshFooterViewWithAction:^{
   //do some thing
