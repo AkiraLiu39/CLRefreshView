@@ -6,7 +6,7 @@
 * 2. 引入头文件:`UIScrollView+CLRefreshView.h`
 
 ### 简单用例
-* 简易下拉刷新头部控件
+#### 简易下拉刷新头部控件
 
 
 ![(simpleHeader)](https://github.com/unknownBug/CLRefreshView/blob/master/Screenshots/simpleHeader.gif "简易下拉刷新头部控件")
@@ -17,7 +17,7 @@
 }];
 ```
 ***
-* 浮动下拉刷新头部控件
+#### 浮动下拉刷新头部控件
 
 
 ![(floatHeader)](https://github.com/unknownBug/CLRefreshView/blob/master/Screenshots/floatHeader.gif "浮动下拉刷新头部控件")
@@ -52,8 +52,26 @@
 来设置底部控件__是否自动加载__
 ***
 
+### 手动进入与结束刷新
+* 手动进入刷新:
+  * 头部
+  ```objc
+  [self.tableView cl_refreshHeaderStartAction];
+  ```
+  * 底部:
+  ```objc
+  [self.tableView cl_refreshFooterStartAction];
+  ```
 
-## 自定义
+
+### 注意
+为了防止__循环引用__,若在block中使用`self` 需要声明为`weak`
+```objc
+__weak typeof(self) weakSelf = self;
+[self.tableView cl_addRefreshHeaderViewWithAction:^{
+  //[weakSelf doSomeThing];
+}];
+```
 
 
 
