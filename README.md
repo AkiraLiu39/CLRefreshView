@@ -54,7 +54,7 @@
 
 ### 手动进入与结束刷新
 * 手动进入刷新:
-  * 头部
+  * 头部:
   ```objc
   [self.tableView cl_refreshHeaderStartAction];
   ```
@@ -62,7 +62,16 @@
   ```objc
   [self.tableView cl_refreshFooterStartAction];
   ```
-
+* 手动结束刷新:
+  * 头部:
+  ```objc
+  [self.tableView cl_refreshHeaderFinishAction];
+  ```
+  * 底部:
+  ```objc
+  [self.tableView cl_refreshFooterFinishAction];
+  ```
+`注意:完成刷新逻辑后都需要手动调用来结束控件的刷新`
 
 ### 注意
 为了防止__循环引用__,若在block中使用`self` 需要声明为`weak`
