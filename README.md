@@ -8,10 +8,8 @@
 ### 简单用例
 * 简易下拉刷新头部控件
 
-
 ***
 ![(simpleHeader)](https://github.com/unknownBug/CLRefreshView/blob/master/Screenshots/simpleHeader.gif "简易下拉刷新头部控件")
-
 
 ```objc
 [self.tableView cl_addRefreshHeaderViewWithAction:^{
@@ -22,7 +20,10 @@
 
 ***
 * 浮动下拉刷新头部控件
+
+***
 ![(floatHeader)](https://github.com/unknownBug/CLRefreshView/blob/master/Screenshots/floatHeader.gif "浮动下拉刷新头部控件")
+
 ```objc
 [self.tableView cl_addFloatRefreshHeaderViewWithAction:^{
   //do some thing
