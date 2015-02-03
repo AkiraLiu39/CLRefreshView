@@ -52,8 +52,8 @@
 来设置底部控件__是否自动加载__
 ***
 
-### 手动进入与结束刷新
-* 手动进入刷新:
+### 手动开始与结束刷新
+* 开始刷新
   * 头部:
   ```objc
   [self.tableView cl_refreshHeaderStartAction];
@@ -62,7 +62,7 @@
   ```objc
   [self.tableView cl_refreshFooterStartAction];
   ```
-* 手动结束刷新:
+* 结束刷新
   * 头部:
   ```objc
   [self.tableView cl_refreshHeaderFinishAction];
