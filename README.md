@@ -93,7 +93,21 @@ __weak typeof(self) weakSelf = self;
   可继承`CLAbstractLoadingView`,然后自己实现一些效果.
   
   具体可参照实例代码中的`CLBubbleLoadingView`以及`CLClockLoadingView`.
-
+* 自定义头部或底部刷新控件
+  * 普通下拉刷新头部需继承`CLRefreshHeader` 可参照实例代码中 `CLSimpleRefreshHeader`
+  * 浮动下拉刷新头部需继承`CLFloatRefreshHeader` 可参照实例代码中 `CLSimpleFloatRefreshHeader`
+  * 普通上垃刷新尾部需继承`CLRefreshFooter` 可参照实例代码中 `CLSimpleRefreshFooter`
+  * 自动刷新尾部需继承`CLAutoRefreshFooter` 可参照实例代码中 `CLSimpleAutoRefreshFooter`
+* 使用
+  * 头部:
+    ```objc
+    [self.tableView cl_addRefreshHeaderView:(CLRefreshHeader *)header];
+    ```
+  * 底部
+    ```objc
+    [self.tableView cl_addRefreshFooterView:(CLRefreshFooter *)footer;];
+    ```
+  
 
 
 
