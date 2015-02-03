@@ -100,13 +100,13 @@ __weak typeof(self) weakSelf = self;
   * 自动刷新尾部需继承`CLAutoRefreshFooter` 可参照实例代码中 `CLSimpleAutoRefreshFooter`
 * 使用
   * 头部:
-    ```objc
-    [self.tableView cl_addRefreshHeaderView:(CLRefreshHeader *)header];
-    ```
+```objc
+[self.tableView cl_addRefreshHeaderView:(CLRefreshHeader *)header];
+```
   * 底部
-    ```objc
-    [self.tableView cl_addRefreshFooterView:(CLRefreshFooter *)footer;];
-    ```
+```objc
+[self.tableView cl_addRefreshFooterView:(CLRefreshFooter *)footer;];
+```
   
 
 
