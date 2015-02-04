@@ -2,8 +2,8 @@
 一个简易下拉刷新和上拉加载的控件
 
 ### 环境
-* build in xCode 6.1
-* test run at ios7,ios8
+* build : xCode 6.1
+* test run : ios7,ios8
 
 ### 使用方法
 * 1. 把 `CLRefreshViewDemo/CLRerfreshView`整个拖入项目
