@@ -118,6 +118,10 @@
     [UIView animateWithDuration:CLRefreshAnimationDurationFast animations:^{
         CGFloat bottom = self.cl_height + self.scrollViewOriginalInsets.bottom;
         self.scrollView.cl_contentInsetBottom = bottom;
+    }completion:^(BOOL finished) {
+        if (self.refreshAction) {
+            self.refreshAction();
+        }
     }];
 }
 -(void)layoutSubviews{

@@ -116,10 +116,6 @@
         self.loadingView.showProgress = CLRefreshLoadingViewMaxProgress;
         [self.loadingView startAnimation];
         [self refreshViewChangeUIWhenLoading];
-        if (self.refreshAction) {
-            self.refreshAction();
-        }
-        
     }
 }
 

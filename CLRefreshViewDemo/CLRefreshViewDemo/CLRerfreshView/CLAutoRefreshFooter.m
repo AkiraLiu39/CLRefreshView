@@ -68,6 +68,9 @@
 }
 -(void)refreshViewChangeUIWhenLoading{
     self.loadButton.hidden = YES;
+    if (self.refreshAction) {
+        self.refreshAction();
+    }
 }
 -(void)refreshViewChangeUIWhenWillLoading{
 

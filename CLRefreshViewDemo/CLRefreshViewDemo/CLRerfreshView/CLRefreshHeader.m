@@ -62,6 +62,10 @@
     }completion:^(BOOL finished) {
         [UIView animateWithDuration:CLRefreshAnimationDurationNormal animations:^{
             self.scrollView.contentOffset = CGPointMake(0, -top);
+        }completion:^(BOOL finished) {
+            if (self.refreshAction) {
+                self.refreshAction();
+            }
         }];
     }];
 }
