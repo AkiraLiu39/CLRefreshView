@@ -92,7 +92,7 @@
     }
 }
 -(CGFloat)showProgress:(UIEdgeInsets)scrollViewInsets scrollViewOffset:(CGPoint)offset{
-    CGFloat willShowOffsetY = self.cl_y - self.scrollView.cl_height;
+    CGFloat willShowOffsetY = self.cl_y - self.scrollView.cl_height + scrollViewInsets.bottom;
     if (offset.y >= willShowOffsetY && self.cl_height != 0 && self.isOverScrollView) {
         CGFloat progress = (offset.y-willShowOffsetY) / self.cl_height;
         return progress;

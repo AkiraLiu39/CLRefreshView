@@ -47,7 +47,7 @@
 }
 
 -(CGFloat)showProgress:(UIEdgeInsets)scrollViewInsets scrollViewOffset:(CGPoint)offset{
-    CGFloat willShowOffsetY = self.cl_y - self.scrollView.cl_height;
+    CGFloat willShowOffsetY = self.cl_y - self.scrollView.cl_height +scrollViewInsets.bottom - self.cl_height;
     if (offset.y >= willShowOffsetY && self.cl_height != 0 && self.isOverScrollView && self.isAutoLoad) {
         return CLRefreshLoadingViewMaxProgress;
     }else{
@@ -76,8 +76,8 @@
 
 }
 -(void)drawRect:(CGRect)rect{
-    [super drawRect:rect];
     CGFloat originalBottom = self.scrollViewOriginalInsets.bottom;
     self.scrollView.cl_contentInsetBottom = originalBottom + self.cl_height;
+    [super drawRect:rect];
 }
 @end
