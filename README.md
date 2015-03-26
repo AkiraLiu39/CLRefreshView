@@ -40,7 +40,7 @@
 * 简易底部加载控件
 ```objc
 [self.tableView cl_addRefreshFooterViewWithAction:^{
-  //do some thing
+  //do something
 }];
 ```
 * 底部自动加载控件
@@ -83,7 +83,7 @@
 ```objc
 __weak typeof(self) weakSelf = self;
 [self.tableView cl_addRefreshHeaderViewWithAction:^{
-  //[weakSelf doSomeThing];
+  //[weakSelf doSomething];
 }];
 ```
 
