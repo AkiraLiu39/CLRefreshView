@@ -17,7 +17,7 @@
 
 ```objc
 [self.tableView cl_addRefreshHeaderViewWithAction:^{
-  //do some thing
+  //do something
 }];
 ```
 ***
@@ -28,7 +28,7 @@
 
 ```objc
 [self.tableView cl_addFloatRefreshHeaderViewWithAction:^{
-  //do some thing
+  //do something
 }];
 ```
 
@@ -46,7 +46,7 @@
 * 底部自动加载控件
 ```objc
 [self.tableView cl_addAutoRefreshFooterViewWithAction:^{
-  //do some thing
+  //do something
 }];
 ```
 `注意:`当底部控件为__自动加载控件__时可使用:
