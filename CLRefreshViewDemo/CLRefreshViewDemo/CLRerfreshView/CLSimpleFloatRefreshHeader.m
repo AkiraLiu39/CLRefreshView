@@ -8,9 +8,9 @@
 
 #import "CLSimpleFloatRefreshHeader.h"
 #import "CLCircleLoadingView.h"
-#import "UIView+CLCommon.h"
+#import "UIView+CLExtension.h"
 #import "CLRefreshViewConstant.h"
-#import "UIScrollView+CLCommon.h"
+#import "UIScrollView+CLExtension.h"
 @interface CLSimpleFloatRefreshHeader()
 @property (nonatomic,strong) NSDate *finishLoadDate;
 @end

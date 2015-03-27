@@ -20,9 +20,9 @@
 		586224D71A7533A2006DEC19 /* CLCircleLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224C81A7533A2006DEC19 /* CLCircleLoadingView.m */; };
 		586224D81A7533A2006DEC19 /* CLAbstractLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224CA1A7533A2006DEC19 /* CLAbstractLoadingView.m */; };
 		586224D91A7533A2006DEC19 /* CLRefreshViewConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224CC1A7533A2006DEC19 /* CLRefreshViewConstant.m */; };
-		586224DA1A7533A2006DEC19 /* UIScrollView+CLCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224CE1A7533A2006DEC19 /* UIScrollView+CLCommon.m */; };
+		586224DA1A7533A2006DEC19 /* UIScrollView+CLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224CE1A7533A2006DEC19 /* UIScrollView+CLExtension.m */; };
 		586224DB1A7533A2006DEC19 /* UIScrollView+CLRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224D01A7533A2006DEC19 /* UIScrollView+CLRefreshView.m */; };
-		586224DC1A7533A2006DEC19 /* UIView+CLCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224D21A7533A2006DEC19 /* UIView+CLCommon.m */; };
+		586224DC1A7533A2006DEC19 /* UIView+CLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224D21A7533A2006DEC19 /* UIView+CLExtension.m */; };
 		586224DF1A753588006DEC19 /* CLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224DE1A753588006DEC19 /* CLTableViewController.m */; };
 		586224E21A753FD4006DEC19 /* CLSimpleRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 586224E11A753FD4006DEC19 /* CLSimpleRefreshHeader.m */; };
 		5869B3831A77689A00312F04 /* CLAutoRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5869B3821A77689A00312F04 /* CLAutoRefreshFooter.m */; };
@@ -72,12 +72,12 @@
 		586224CA1A7533A2006DEC19 /* CLAbstractLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLAbstractLoadingView.m; sourceTree = "<group>"; };
 		586224CB1A7533A2006DEC19 /* CLRefreshViewConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLRefreshViewConstant.h; sourceTree = "<group>"; };
 		586224CC1A7533A2006DEC19 /* CLRefreshViewConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLRefreshViewConstant.m; sourceTree = "<group>"; };
-		586224CD1A7533A2006DEC19 /* UIScrollView+CLCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+CLCommon.h"; sourceTree = "<group>"; };
-		586224CE1A7533A2006DEC19 /* UIScrollView+CLCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+CLCommon.m"; sourceTree = "<group>"; };
+		586224CD1A7533A2006DEC19 /* UIScrollView+CLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+CLExtension.h"; sourceTree = "<group>"; };
+		586224CE1A7533A2006DEC19 /* UIScrollView+CLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+CLExtension.m"; sourceTree = "<group>"; };
 		586224CF1A7533A2006DEC19 /* UIScrollView+CLRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+CLRefreshView.h"; sourceTree = "<group>"; };
 		586224D01A7533A2006DEC19 /* UIScrollView+CLRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+CLRefreshView.m"; sourceTree = "<group>"; };
-		586224D11A7533A2006DEC19 /* UIView+CLCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CLCommon.h"; sourceTree = "<group>"; };
-		586224D21A7533A2006DEC19 /* UIView+CLCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CLCommon.m"; sourceTree = "<group>"; };
+		586224D11A7533A2006DEC19 /* UIView+CLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CLExtension.h"; sourceTree = "<group>"; };
+		586224D21A7533A2006DEC19 /* UIView+CLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CLExtension.m"; sourceTree = "<group>"; };
 		586224DD1A753588006DEC19 /* CLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTableViewController.h; sourceTree = "<group>"; };
 		586224DE1A753588006DEC19 /* CLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTableViewController.m; sourceTree = "<group>"; };
 		586224E01A753FD4006DEC19 /* CLSimpleRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSimpleRefreshHeader.h; sourceTree = "<group>"; };
@@ -214,12 +214,12 @@
 				586224CA1A7533A2006DEC19 /* CLAbstractLoadingView.m */,
 				586224CB1A7533A2006DEC19 /* CLRefreshViewConstant.h */,
 				586224CC1A7533A2006DEC19 /* CLRefreshViewConstant.m */,
-				586224CD1A7533A2006DEC19 /* UIScrollView+CLCommon.h */,
-				586224CE1A7533A2006DEC19 /* UIScrollView+CLCommon.m */,
+				586224CD1A7533A2006DEC19 /* UIScrollView+CLExtension.h */,
+				586224CE1A7533A2006DEC19 /* UIScrollView+CLExtension.m */,
 				586224CF1A7533A2006DEC19 /* UIScrollView+CLRefreshView.h */,
 				586224D01A7533A2006DEC19 /* UIScrollView+CLRefreshView.m */,
-				586224D11A7533A2006DEC19 /* UIView+CLCommon.h */,
-				586224D21A7533A2006DEC19 /* UIView+CLCommon.m */,
+				586224D11A7533A2006DEC19 /* UIView+CLExtension.h */,
+				586224D21A7533A2006DEC19 /* UIView+CLExtension.m */,
 				586224C71A7533A2006DEC19 /* CLCircleLoadingView.h */,
 				586224C81A7533A2006DEC19 /* CLCircleLoadingView.m */,
 				586224E01A753FD4006DEC19 /* CLSimpleRefreshHeader.h */,
@@ -357,10 +357,10 @@
 				586224D41A7533A2006DEC19 /* CLRefreshFooter.m in Sources */,
 				586224DF1A753588006DEC19 /* CLTableViewController.m in Sources */,
 				586224D81A7533A2006DEC19 /* CLAbstractLoadingView.m in Sources */,
-				586224DC1A7533A2006DEC19 /* UIView+CLCommon.m in Sources */,
+				586224DC1A7533A2006DEC19 /* UIView+CLExtension.m in Sources */,
 				58A91F9F1A7B6783008EEA8C /* CLBubbleRefreshHeader.m in Sources */,
 				586224D71A7533A2006DEC19 /* CLCircleLoadingView.m in Sources */,
-				586224DA1A7533A2006DEC19 /* UIScrollView+CLCommon.m in Sources */,
+				586224DA1A7533A2006DEC19 /* UIScrollView+CLExtension.m in Sources */,
 				586224E21A753FD4006DEC19 /* CLSimpleRefreshHeader.m in Sources */,
 				586EB9781A7E19DB001D5D7B /* CLClockLoadingView.m in Sources */,
 				586224D31A7533A2006DEC19 /* CLFloatRefreshHeader.m in Sources */,

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIScrollView (CLCommon)
+@interface UIScrollView (CLExtension)
 -(CGFloat)cl_contentInsetTop;
 
 -(CGFloat)cl_contentInsetRight;

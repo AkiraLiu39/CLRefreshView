@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 unknown. All rights reserved.
 //
 
-#import "UIScrollView+CLCommon.h"
+#import "UIScrollView+CLExtension.h"
 
-@implementation UIScrollView (CLCommon)
+@implementation UIScrollView (CLExtension)
 -(CGFloat)cl_contentInsetTop{
     return self.contentInset.top;
 }

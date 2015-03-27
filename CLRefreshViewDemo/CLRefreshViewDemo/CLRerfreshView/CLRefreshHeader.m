@@ -9,7 +9,7 @@
 #import "CLRefreshHeader.h"
 #import "CLCircleLoadingView.h"
 #import "UIView+CLCommon.h"
-#import "UIScrollView+CLCommon.h"
+#import "UIScrollView+CLExtension.h"
 #import "CLRefreshViewConstant.h"
 @implementation CLRefreshHeader
 

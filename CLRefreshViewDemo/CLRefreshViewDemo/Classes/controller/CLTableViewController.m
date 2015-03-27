@@ -8,8 +8,8 @@
 
 #import "CLTableViewController.h"
 #import "UIScrollView+CLRefreshView.h"
-#import "UIScrollView+CLCommon.h"
-#import "UIView+CLCommon.h"
+#import "UIScrollView+CLExtension.h"
+#import "UIView+CLExtension.h"
 #import "CLSimpleFloatRefreshHeader.h"
 #import "CLSimpleAutoRefreshFooter.h"
 #import "CLBubbleRefreshHeader.h"

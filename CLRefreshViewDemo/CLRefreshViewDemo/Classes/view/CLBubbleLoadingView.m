@@ -7,7 +7,7 @@
 //
 
 #import "CLBubbleLoadingView.h"
-#import "UIView+CLCommon.h"
+#import "UIView+CLExtension.h"
 @interface CLBubbleLoadingView()
 @property (nonatomic,strong) CAAnimationGroup *animationGroup;
 @property (nonatomic,assign) CGFloat fromAlpha;

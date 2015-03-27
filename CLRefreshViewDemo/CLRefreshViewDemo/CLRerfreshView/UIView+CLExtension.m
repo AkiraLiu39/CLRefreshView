@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 unknown. All rights reserved.
 //
 
-#import "UIView+CLCommon.h"
+#import "UIView+CLExtension.h"
 
-@implementation UIView (CLCommon)
+@implementation UIView (CLExtension)
 
 #pragma mark -getter and setter
 

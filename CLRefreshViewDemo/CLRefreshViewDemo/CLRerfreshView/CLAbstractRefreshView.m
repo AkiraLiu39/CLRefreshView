@@ -10,7 +10,7 @@
 #import "CLAbstractLoadingView.h"
 #import "UIView+CLCommon.h"
 #import "CLRefreshViewConstant.h"
-#import "UIScrollView+CLCommon.h"
+#import "UIScrollView+CLExtension.h"
 #import "CLRefreshViewConstant.h"
 @interface CLAbstractRefreshView ()
 @end

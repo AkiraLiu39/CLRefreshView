@@ -9,7 +9,7 @@
 #import "CLSimpleRefreshHeader.h"
 #import "CLCircleLoadingView.h"
 #import "CLRefreshViewConstant.h"
-#import "UIView+CLCommon.h"
+#import "UIView+CLExtension.h"
 
 @implementation CLSimpleRefreshHeader
 -(instancetype)initWithFrame:(CGRect)frame{

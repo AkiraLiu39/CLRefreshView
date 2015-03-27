@@ -8,7 +8,7 @@
 
 #import "CLSimpleRefreshFooter.h"
 #import "CLCircleLoadingView.h"
-#import "UIView+CLCommon.h"
+#import "UIView+CLExtension.h"
 @implementation CLSimpleRefreshFooter
 
 -(instancetype)initWithFrame:(CGRect)frame{

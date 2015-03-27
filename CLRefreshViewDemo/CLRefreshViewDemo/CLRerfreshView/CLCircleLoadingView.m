@@ -7,7 +7,7 @@
 //
 
 #import "CLCircleLoadingView.h"
-#import "UIView+CLCommon.h"
+#import "UIView+CLExtension.h"
 #import "CLRefreshViewConstant.h"
 @implementation CLCircleLoadingView
 

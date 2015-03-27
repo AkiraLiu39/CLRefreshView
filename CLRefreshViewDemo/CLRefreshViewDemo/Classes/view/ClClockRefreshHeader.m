@@ -8,7 +8,7 @@
 
 #import "ClClockRefreshHeader.h"
 #import "CLClockLoadingView.h"
-#import "UIView+CLCommon.h"
+#import "UIView+CLExtension.h"
 #import "CLRefreshViewConstant.h"
 @interface ClClockRefreshHeader()
 @property (nonatomic,weak) UILabel *textLabel;

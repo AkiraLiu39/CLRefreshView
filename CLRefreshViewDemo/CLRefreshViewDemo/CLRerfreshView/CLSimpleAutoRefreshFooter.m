@@ -9,7 +9,7 @@
 #import "CLSimpleAutoRefreshFooter.h"
 #import "CLCircleLoadingView.h"
 #import "UIView+CLCommon.h"
-#import "UIScrollView+CLCommon.h"
+#import "UIScrollView+CLExtension.h"
 @implementation CLSimpleAutoRefreshFooter
 
 -(instancetype)initWithFrame:(CGRect)frame{

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIView (CLCommon)
+@interface UIView (CLExtension)
 -(CGSize)cl_size;
 
 -(void)setCl_size:(CGSize)size;

@@ -8,7 +8,7 @@
 
 #import "CLFloatRefreshHeader.h"
 #import "CLRefreshViewConstant.h"
-#import "UIView+CLCommon.h"
+#import "UIView+CLExtension.h"
 @implementation CLFloatRefreshHeader
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{

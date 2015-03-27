@@ -8,7 +8,7 @@
 
 #import "CLBubbleRefreshHeader.h"
 #import "CLBubbleLoadingView.h"
-#import "UIView+CLCommon.h"
+#import "UIView+CLExtension.h"
 @implementation CLBubbleRefreshHeader
 
 -(instancetype)initWithFrame:(CGRect)frame{
