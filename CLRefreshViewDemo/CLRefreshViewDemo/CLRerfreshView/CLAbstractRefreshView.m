@@ -8,7 +8,7 @@
 
 #import "CLAbstractRefreshView.h"
 #import "CLAbstractLoadingView.h"
-#import "UIView+CLCommon.h"
+#import "UIView+CLExtension.h"
 #import "CLRefreshViewConstant.h"
 #import "UIScrollView+CLExtension.h"
 #import "CLRefreshViewConstant.h"

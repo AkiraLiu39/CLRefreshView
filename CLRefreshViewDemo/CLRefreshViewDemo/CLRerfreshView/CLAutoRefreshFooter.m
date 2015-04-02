@@ -7,7 +7,7 @@
 //
 
 #import "CLAutoRefreshFooter.h"
-#import "UIView+CLCommon.h"
+#import "UIView+CLExtension.h"
 #import "UIScrollView+CLExtension.h"
 #import "CLCircleLoadingView.h"
 #import "CLRefreshViewConstant.h"
