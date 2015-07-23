@@ -31,6 +31,7 @@
 		5872AE721A75D1A500DC1555 /* CLMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5872AE711A75D1A500DC1555 /* CLMenuController.m */; };
 		5872AE751A760C5000DC1555 /* CLSimpleFloatRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5872AE741A760C5000DC1555 /* CLSimpleFloatRefreshHeader.m */; };
 		5872AE781A76301600DC1555 /* CLSimpleRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5872AE771A76301600DC1555 /* CLSimpleRefreshFooter.m */; };
+		58A2739C1B57A03500144D43 /* ClClockAutoRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A2739B1B57A03500144D43 /* ClClockAutoRefreshFooter.m */; };
 		58A91F981A7B2A5A008EEA8C /* CLSimpleAutoRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A91F971A7B2A5A008EEA8C /* CLSimpleAutoRefreshFooter.m */; };
 		58A91F9C1A7B310F008EEA8C /* CLBubbleLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A91F9B1A7B310F008EEA8C /* CLBubbleLoadingView.m */; };
 		58A91F9F1A7B6783008EEA8C /* CLBubbleRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A91F9E1A7B6783008EEA8C /* CLBubbleRefreshHeader.m */; };
@@ -94,6 +95,8 @@
 		5872AE741A760C5000DC1555 /* CLSimpleFloatRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSimpleFloatRefreshHeader.m; sourceTree = "<group>"; };
 		5872AE761A76301600DC1555 /* CLSimpleRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSimpleRefreshFooter.h; sourceTree = "<group>"; };
 		5872AE771A76301600DC1555 /* CLSimpleRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSimpleRefreshFooter.m; sourceTree = "<group>"; };
+		58A2739A1B57A03500144D43 /* ClClockAutoRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClClockAutoRefreshFooter.h; sourceTree = "<group>"; };
+		58A2739B1B57A03500144D43 /* ClClockAutoRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClClockAutoRefreshFooter.m; sourceTree = "<group>"; };
 		58A91F961A7B2A5A008EEA8C /* CLSimpleAutoRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSimpleAutoRefreshFooter.h; sourceTree = "<group>"; };
 		58A91F971A7B2A5A008EEA8C /* CLSimpleAutoRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSimpleAutoRefreshFooter.m; sourceTree = "<group>"; };
 		58A91F9A1A7B310F008EEA8C /* CLBubbleLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBubbleLoadingView.h; sourceTree = "<group>"; };
@@ -247,6 +250,8 @@
 				586EB9771A7E19DB001D5D7B /* CLClockLoadingView.m */,
 				586EB9791A7E2F4A001D5D7B /* ClClockRefreshHeader.h */,
 				586EB97A1A7E2F4A001D5D7B /* ClClockRefreshHeader.m */,
+				58A2739A1B57A03500144D43 /* ClClockAutoRefreshFooter.h */,
+				58A2739B1B57A03500144D43 /* ClClockAutoRefreshFooter.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -358,6 +363,7 @@
 				586224DF1A753588006DEC19 /* CLTableViewController.m in Sources */,
 				586224D81A7533A2006DEC19 /* CLAbstractLoadingView.m in Sources */,
 				586224DC1A7533A2006DEC19 /* UIView+CLExtension.m in Sources */,
+				58A2739C1B57A03500144D43 /* ClClockAutoRefreshFooter.m in Sources */,
 				58A91F9F1A7B6783008EEA8C /* CLBubbleRefreshHeader.m in Sources */,
 				586224D71A7533A2006DEC19 /* CLCircleLoadingView.m in Sources */,
 				586224DA1A7533A2006DEC19 /* UIScrollView+CLExtension.m in Sources */,

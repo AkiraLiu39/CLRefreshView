@@ -26,7 +26,7 @@
  *
  *  @return ContentSize.height是否大于 ScrollView的高度
  */
--(BOOL)isOverScrollView;
+@property (nonatomic,assign,getter=isOverScrollView) BOOL overScrollView;
 /**
  *  当ScrollView.contentSize 发生变化时，调整自身Frame
  */

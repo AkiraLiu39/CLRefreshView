@@ -12,11 +12,14 @@
 #import "CLCircleLoadingView.h"
 #import "CLRefreshViewConstant.h"
 
-@interface CLRefreshFooter()
-@property (nonatomic,assign,getter=isOverScrollView) BOOL overScrollView;
+@interface CLRefreshFooter(){
+    @protected
+    BOOL _overScrollView;
+}
+
 @end
 @implementation CLRefreshFooter
-
+@synthesize overScrollView = _overScrollView;
 - (instancetype)initWithFrame:(CGRect)frame
 {
     frame.size.height = CLRefreshFooterVeiwHeight;

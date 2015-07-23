@@ -94,7 +94,7 @@
         _scrollViewOriginalInsets = self.scrollView.contentInset;
     }
     _state = state;
-    
+
     if (self.state == CLRefreshViewStateNormal) {
         if (self.previousState == CLRefreshViewStateLoading) {
             [self.loadingView stopAnimation];

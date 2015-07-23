@@ -12,7 +12,7 @@
 #import "CLCircleLoadingView.h"
 #import "CLRefreshViewConstant.h"
 @implementation CLAutoRefreshFooter
-
+@synthesize overScrollView = _overScrollView;
 
 #pragma mark -overwrite
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
@@ -30,7 +30,14 @@
         }
     }
 }
-
+-(void)setOverScrollView:(BOOL)overScrollView{
+    
+    _overScrollView = overScrollView;
+    if (self.state != CLRefreshViewStateLoading && self.isAutoLoad) {
+        self.loadButton.hidden = overScrollView;
+        self.loadingView.hidden = !overScrollView;
+    }
+}
 -(void)adjustState{
     if (!self.window) {
         //未在window上画出，直接返回
@@ -64,7 +71,6 @@
 }
 
 -(void)refreshViewChangeUIWhenFinishLoading{
-    
 }
 -(void)refreshViewChangeUIWhenLoading{
     self.loadButton.hidden = YES;
@@ -73,7 +79,6 @@
     }
 }
 -(void)refreshViewChangeUIWhenWillLoading{
-
 }
 -(void)drawRect:(CGRect)rect{
     CGFloat originalBottom = self.scrollViewOriginalInsets.bottom;

@@ -14,6 +14,7 @@
 #import "CLSimpleAutoRefreshFooter.h"
 #import "CLBubbleRefreshHeader.h"
 #import "ClClockRefreshHeader.h"
+#import "ClClockAutoRefreshFooter.h"
 #define kLoadOptionHeader 1
 #define kLoadOptionFooter 2
 NSString *const CLTableViewCellId = @"CellId";
@@ -79,6 +80,7 @@ NSString *const CLTableViewCellId = @"CellId";
     }
     if ((self.refreshType & CLRefreshTypeCustomLoadingView2) == CLRefreshTypeCustomLoadingView2)  {
         [self setupClockLoadingViewHeader];
+        [self setupClockAutoRefreshFooter];
     }
     
 }
@@ -131,6 +133,15 @@ NSString *const CLTableViewCellId = @"CellId";
     [self.tableView cl_addRefreshHeaderView:header];
 }
 
+-(void)setupClockAutoRefreshFooter{
+    __weak typeof(self) weakSelf = self;
+    CLAutoRefreshFooter *footer = [ClClockAutoRefreshFooter refreshView];
+    footer.refreshAction = ^(){
+        [weakSelf loadHeaderData:kLoadOptionFooter];
+    };
+    [self.tableView cl_addRefreshFooterView:footer];
+}
+
 -(void)loadHeaderData:(int)option{
     dispatch_queue_t queue= dispatch_queue_create("com.unknown.refresh.demo", DISPATCH_QUEUE_SERIAL);
     NSString *format;
@@ -162,7 +173,7 @@ NSString *const CLTableViewCellId = @"CellId";
         if (option == kLoadOptionHeader) {
             [self.tableView cl_refreshHeaderFinishAction];
         }else{
-            if ((self.refreshType & CLRefreshTypeAutoRefreshFooter) == CLRefreshTypeAutoRefreshFooter) {
+            if ((self.refreshType & CLRefreshTypeAutoRefreshFooter) == CLRefreshTypeAutoRefreshFooter || (self.refreshType & CLRefreshTypeCustomLoadingView2) == CLRefreshTypeCustomLoadingView2) {
                 self.tableView.cl_refreshFooterAutoLoad = newDatas.count > 9;
             }
             [self.tableView cl_refreshFooterFinishAction];
