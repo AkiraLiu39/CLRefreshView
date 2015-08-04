@@ -67,7 +67,7 @@
     if(!self.isAutoLoad){
         self.loadButton.hidden = NO;
         [self.loadButton setTitle:self.unAutoLoadButtonTitle forState:UIControlStateNormal];
-    }else{
+    }else if(!self.isOverScrollView){
         self.loadButton.hidden = NO;
         [self.loadButton setTitle:self.normalLoadButtonTitle forState:UIControlStateNormal];
     }
