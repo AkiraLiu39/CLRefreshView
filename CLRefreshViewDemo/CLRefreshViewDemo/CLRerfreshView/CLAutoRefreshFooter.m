@@ -67,6 +67,9 @@
     if(!self.isAutoLoad){
         self.loadButton.hidden = NO;
         [self.loadButton setTitle:self.unAutoLoadButtonTitle forState:UIControlStateNormal];
+    }else{
+        self.loadButton.hidden = NO;
+        [self.loadButton setTitle:self.normalLoadButtonTitle forState:UIControlStateNormal];
     }
 }
 
